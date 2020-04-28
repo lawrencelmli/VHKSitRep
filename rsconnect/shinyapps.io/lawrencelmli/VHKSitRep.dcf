@@ -1,0 +1,13 @@
+name: VHKSitRep
+title: VHKSitRep
+username:
+account: lawrencelmli
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2178173
+bundleId: 3073525
+url: https://lawrencelmli.shinyapps.io/VHKSitRep/
+when: 1588016681.29566
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .gitattributes|app_sdash.R|app_sdash_with_COVID.R|app_shiny.R|app_version0.1.R|COVIDSitRep01.xlsm|dataExtract.R|dataExtract_covid.R|object_names|README.md|SitRep01.xlsm|SitRep02.xlsm|stackoverflow.R|test_script.R|PaulApivat

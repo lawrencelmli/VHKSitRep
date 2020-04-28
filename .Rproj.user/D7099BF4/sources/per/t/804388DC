@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587988656293.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "804388DC",
+    "lastKnownWriteTime" : 2407834978728,
+    "last_content_update" : 1587988656293,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "AB331CF5",
+        "caption" : "sum_flow",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sum_flow&cache_key=AB331CF5",
+        "displayedObservations" : "2",
+        "environment" : "",
+        "expression" : "sum_flow",
+        "object" : "sum_flow",
+        "preview" : "0",
+        "totalObservations" : "2",
+        "variables" : "6"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

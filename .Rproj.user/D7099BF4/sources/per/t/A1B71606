@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587764198948.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A1B71606",
+    "lastKnownWriteTime" : 7076901233166004579,
+    "last_content_update" : 1587764198948,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "9C2154B6",
+        "caption" : "night_medicine",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=night_medicine&cache_key=9C2154B6",
+        "displayedObservations" : 15,
+        "environment" : "",
+        "expression" : "night_medicine",
+        "object" : "night_medicine",
+        "preview" : 0,
+        "totalObservations" : 15,
+        "variables" : 3
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

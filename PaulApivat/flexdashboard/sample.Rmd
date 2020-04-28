@@ -1,0 +1,206 @@
+---
+title: "Thailand: COVID-19 Growth Dashboard"
+date: "updated: `r format(Sys.time(), '%d %B, %Y')`, *NOTE*: Total Tests (MPH) 100,498 - April 14th (different from PUI reported by DDC)"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+runtime: shiny
+---
+
+```{r global, include=FALSE}
+# DDC_WHO data
+df_full <- read.csv("ddc_who_data.csv")
+# ECDC data
+#df_full <- read.csv("https://covid.ourworldindata.org/data/ecdc/full_data.csv")
+
+# WHO data
+#df_full <- read.csv("https://covid.ourworldindata.org/data/full_data.csv")
+#df_new <- read.csv("https://covid.ourworldindata.org/data/new_cases.csv")
+```
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Row
+-----------------------------------------------------------------------
+
+```{r, include=FALSE}
+library(tidyverse)
+
+# total cases
+full_thailand <- df_full %>% filter(location=="Thailand")
+# add new columns
+#full_thailand[,"Changes"] <- NA
+#full_thailand[,"Growth_Factor"] <- NA
+
+# calculate Changes (same as daily new_cases)
+full_thailand <- full_thailand %>%
+        arrange(date) %>%
+        mutate(Changes = total_cases - lag(total_cases, default = first(total_cases)))
+
+# calculate Growth Factor (cases)
+full_thailand <- full_thailand %>%
+        arrange(date) %>%
+        mutate(Growth_Factor = Changes / lag(Changes, default = first(Changes)))
+
+# convert Inf to NA - in Growth Factor column
+full_thailand$Growth_Factor = ifelse(full_thailand$Growth_Factor==Inf, NA, full_thailand$Growth_Factor)
+
+# calculate Growth Rate (cases)
+full_thailand <- full_thailand %>% 
+        arrange(date) %>% 
+        mutate(Growth_Rate = ((total_cases - lag(total_cases, default = first(total_cases))) / lag(total_cases, default = first(total_cases)))*100)
+
+# calculate Changes_PUI (patients under investigation; daily new tests)
+full_thailand <- full_thailand %>% 
+        arrange(date) %>% 
+        mutate(Changes_PUI = pui - lag(pui, default = first(pui)))
+
+# calculate Growth Factor (tests)
+full_thailand <- full_thailand %>% 
+        arrange(date) %>% 
+        mutate(Growth_Factor_PUI = Changes_PUI / lag(Changes_PUI, default = first(Changes_PUI)))
+
+# convert Inf to NA - in Growth_Factor_PUI column
+full_thailand$Growth_Factor_PUI = ifelse(full_thailand$Growth_Factor_PUI==Inf, NA, full_thailand$Growth_Factor_PUI)
+
+# calculate Growth Factor (Death)
+full_thailand <- full_thailand %>%
+        arrange(date) %>%
+        mutate(Growth_Factor_Death = new_deaths / lag(new_deaths, default = first(new_deaths)))
+
+```
+
+
+### Growth Factor (Cases) Today
+
+```{r}
+# note: a growth factor of 1.15 implies doubling the total in 5 days
+today_growth <- format(round(full_thailand$Growth_Factor[nrow(full_thailand)], 2), nsmall = 2)
+valueBox(today_growth, color = ifelse(today_growth=="NA", "#808080", ifelse(today_growth < 1.15, "#33cc33", "#FF3300")))
+```
+
+### Tests Per Confirmed Case
+```{r}
+test_per_case <- format(round(full_thailand$testpercase[nrow(full_thailand)], 2), nsmall = 2)
+valueBox(test_per_case, color = "#53868B")
+```
+
+### Growth Factor (Death) Today
+
+```{r}
+death_growth <- format(round(full_thailand$Growth_Factor_Death[nrow(full_thailand)], 2), nsmall = 0)
+valueBox(death_growth, color = ifelse(death_growth=="NA", "#808080", ifelse(death_growth < 1.15, "#33cc33", "#FF3300")))
+
+#yesterday_growth_rate <- format(round(full_thailand$Growth_Rate[nrow(full_thailand)], 2), nsmall = 0)
+#valueBox(yesterday_growth_rate, color = "#36454F")
+```
+
+
+Row
+-----------------------------------------------------------------------
+
+
+### ยอดผู้ติดเชื้อเพิ่มวันนี้ // New Cases Today
+
+```{r}
+today_new <- format(round(full_thailand$new_cases[nrow(full_thailand)], 2), nsmall = 0)
+valueBox(today_new, icon = "fa-pencil", color = "#336699")
+```
+
+### Change in Total PUI from Yesterday
+```{r}
+test_new <- format(round(full_thailand$Changes_PUI[nrow(full_thailand)], 2), nsmall = 0)
+valueBox(test_new, color = "#336699")
+```
+
+### New Deaths Today
+
+```{r}
+death_new <- format(round(full_thailand$new_deaths[nrow(full_thailand)], 2), nsmall = 0)
+valueBox(death_new, color = "#336699")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Total Cases
+```{r}
+total_case <- format(round(full_thailand$total_cases[nrow(full_thailand)], 2), nsmall = 0)
+valueBox(total_case, color = "#36454F")
+```
+
+
+### จำนวนคนที่ได้รับการตรวจสะสม //  Total Tests (Patients Under Investigation) 
+
+```{r}
+# data source: https://ddc.moph.go.th/viralpneumonia/eng/index.php
+# in png file, need manual update
+total_test <- full_thailand$pui[nrow(full_thailand)]
+valueBox(total_test, color = "#36454F")
+```
+
+### Total Deaths
+
+```{r}
+total_death <- format(round(full_thailand$total_deaths[nrow(full_thailand)], 2), nsmall = 0)
+valueBox(total_death, color = "#36454F")
+```
+
+Row
+-----------------------------------------------------------------------
+### New Cases & Tests Over Time
+
+```{r}
+library(reshape2)
+# subset data frame with only column of interests
+full_thailand2 <- full_thailand %>%
+  select(date, new_cases, Changes_PUI)
+
+# reshape - melt
+full_thailand2_melt <- melt(full_thailand2, id.vars = 'date')
+
+# plot
+thai_new_case_test <- ggplot(full_thailand2_melt, aes(x=date, y=value, fill=variable)) + geom_bar(stat = 'identity', position = 'dodge') + scale_fill_manual(values =  c("red", "black"), labels = c("New Cases", "New Tests")) + theme_classic() + labs(title = "New Cases & New Tests", subtitle = "Jan 21 - present", y = "Numbers" ,fill = "Cases & Tests") + theme(axis.text.x = element_blank())
+
+renderPlot(thai_new_case_test)
+```
+
+### Total Cases & Tests Over Time
+
+```{r}
+library(reshape2)
+full_thailand3 <- full_thailand %>%
+  select(date, total_cases, pui)
+full_thailand3_melt <- melt(full_thailand3, id.vars = 'date')
+
+thai_total_case_test <- ggplot(full_thailand3_melt, aes(x=date, y=value, fill=variable)) + geom_bar(stat = 'identity', position = 'dodge') + scale_fill_manual(values =  c("orange", "black"), labels = c("Total Cases", "Total Tests")) + theme_classic() + labs(title = "Total Cases & Total Tests", subtitle = "Jan 21 - present", y = "Numbers" ,fill = "Cases & Tests") + theme(axis.text.x = element_blank())
+
+#thai_total_bar <- ggplot(data = full_thailand, aes(x=date)) + geom_bar(aes(y=total_cases), stat = "identity", size=1, fill="#36454F", color = "white", alpha = 1.0) + labs(title = "Total Cases", subtitle = "Jan 21 - present") + theme_classic() + theme(axis.text.x = element_blank())
+
+renderPlot(thai_total_case_test)
+```
+
+Row
+----------------------------------------------------------------------
+### Tests Per Cases Over Time
+```{r}
+test_per_case <- ggplot(data = full_thailand, aes(x=date)) + geom_bar(aes(y=testpercase), stat = "identity", size=2, fill="#53868B", color = "white", alpha = 1.0) + labs(title = "Tests Per Case", subtitle = "Jan 21 - present") + theme_classic() + theme(axis.text.x = element_blank())
+
+renderPlot(test_per_case)
+```
+
+### Total Cases Log10 Scale
+
+```{r}
+
+full_thailand$date <- as.Date(full_thailand$date)
+
+total_case_log <- ggplot(data = full_thailand, mapping = aes(x=date, y=total_cases)) + geom_point(color = "green") + scale_y_continuous(trans = 'log10') + scale_x_date(date_labels = '%d, %b', date_breaks = '2 day') + theme(axis.text.x = element_text(angle = 90, hjust = 1), axis.text.y = element_text(colour = 'whitesmoke'), panel.background = element_rect(fill = 'black'), panel.grid.major = element_line(colour = 'black'), panel.grid.minor = element_line(colour = 'black'), plot.background = element_rect(fill = 'black'), plot.title = element_text(color = 'green'), plot.subtitle = element_text(color = 'light grey')) + labs(x = "Date", y = "Total Cases (Log10)", title = "Total Cases in Thailand", subtitle = "Jan 21 - Apr 30") + expand_limits(y = c(0,10000), x = as.Date(c("2020-01-21", "2020-04-30")))
+
+#test_total_bar <- ggplot(data = full_thailand, aes(x=date)) + geom_bar(aes(y=pui), stat = "identity", size=1, fill="#36454F", color = "white", alpha = 1.0) + labs(title = "Total Tests", subtitle = "Jan 21 - present") + theme_classic() + theme(axis.text.x = element_blank())
+
+renderPlot(total_case_log)
+```

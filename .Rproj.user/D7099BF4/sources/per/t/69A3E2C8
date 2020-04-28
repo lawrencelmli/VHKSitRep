@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587925697499.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2770473816",
+    "id" : "69A3E2C8",
+    "lastKnownWriteTime" : 1587985722,
+    "last_content_update" : 1587985722614,
+    "path" : "~/R_Projects/VHKSitRep/dataExtract_covid.R",
+    "project_path" : "dataExtract_covid.R",
+    "properties" : {
+        "cursorPosition" : "106,0",
+        "scrollLine" : "96",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

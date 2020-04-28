@@ -1,0 +1,6 @@
+infoBoxOutput("nrc_predicted", width = 4),
+                    infoBoxOutput("nrc_total", width = 2),
+                    infoBoxOutput("nrc_admissions", width = 3),
+                    infoBoxOutput("nrc_remain", width = 3),
+                    infoBoxOutput("nrc_beds", width = 2),
+                    infoBoxOutput("nrc_dc_expected", width = 3)
