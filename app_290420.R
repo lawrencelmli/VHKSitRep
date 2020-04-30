@@ -10,8 +10,6 @@ library(knitr)
 library(kableExtra)
 
 ui <- dashboardPage(
-  
-  
   dashboardHeader(title = "VHK Situation Report"),
   dashboardSidebar(
     
@@ -29,7 +27,7 @@ ui <- dashboardPage(
       
       menuItem("Night Capacity Report", tabName = "night_report", icon = icon("clipboard")),
     
-      menuItem("Safety Huddle", tabName = "safety", icon = icon("hard-hat")),
+      menuItem("Safety Huddle", tabName = "safety", icon = icon("exclamation")),
     
       menuItem("08:30", tabName = "eight_thirty", icon = icon("clock")),
     
@@ -39,10 +37,10 @@ ui <- dashboardPage(
     
       menuItem("19:00", tabName = "seven_pm", icon = icon("clock")),
       
-      menuItem("CoViD-19", icon = icon("lungs-virus"), startExpanded = F,
+      menuItem("CoViD-19", icon = icon("cog"), startExpanded = F,
                
                menuSubItem("Night Capacity Report", tabName = "covid_night", icon = icon("clipboard")),
-               menuSubItem("Safety Huddle", tabName = "covid_safety", icon = icon("hard-hat")),
+               menuSubItem("Safety Huddle", tabName = "covid_safety", icon = icon("exclamation")),
                menuSubItem("08:30", tabName = "covid_eight_thirty", icon = icon("clock")),
                menuSubItem("13:00", tabName = "covid_one_pm", icon = icon("clock")),
                menuSubItem("17:00", tabName = "covid_five_pm", icon = icon("clock")),
@@ -59,12 +57,11 @@ ui <- dashboardPage(
     
     ), #/dashboardSidebar
   dashboardBody(
-    tags$style("@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);"), # to use the latest fontawesome icons
     tabItems(
-      tabItem(tabName = "instructions", h3("How to Generate Reports"),
+      tabItem(tabName = "instructions", h3("How to Generate Report"),
               p("To use this app, please upload the relevant Excel file using the upload buttons, 
-                then click on the links to see the reports"),
-              p("The reports during CoViD-19 period are found under the CoViD-19 menu on the left."),
+                then click on the links to see the report"),
+              p("The reports during CoViD-19 period are found under the CoViD-19 item on the left."),
               p("Copyright (c) Lawrence Li")
               ),
       tabItem(tabName = "night_report", h3("Night Capacity Report"),
@@ -170,7 +167,7 @@ ui <- dashboardPage(
                             infoBoxOutput("au1_px", width = 2),
                             infoBoxOutput("au1_beds", width = 2),
                             infoBoxOutput("au1_dc", width = 2),
-                            infoBoxOutput("au1_ongoing", width = 3),
+                            infoBoxOutput("au1_ongoing", width = 2),
                             infoBoxOutput("au1_gp", width = 2)
                             )
                         ),
@@ -179,7 +176,7 @@ ui <- dashboardPage(
                             infoBoxOutput("au2_px", width = 2),
                             infoBoxOutput("au2_beds", width = 2),
                             infoBoxOutput("au2_dc", width = 2),
-                            infoBoxOutput("au2_ongoing", width = 3),
+                            infoBoxOutput("au2_ongoing", width = 2),
                             infoBoxOutput("au2_gp", width = 2)
                             )
                         )
@@ -207,7 +204,7 @@ ui <- dashboardPage(
                     )
                 ),
               fluidRow(
-                box(title = "CRITICAL CARE BEDS AVAILABLE", width = 12, collapsible = T,
+                box(title = "CRITICAL CARE BEDS", width = 12, collapsible = T,
                     infoBoxOutput("shc_cc1", width = 2),
                     infoBoxOutput("shc_cc2", width = 2),
                     infoBoxOutput("shc_cc3", width = 2),
@@ -215,49 +212,7 @@ ui <- dashboardPage(
                     infoBoxOutput("shc_cc5", width = 2),
                     infoBoxOutput("shc_cc6", width = 2)
                     )
-                ),
-              
-              fluidRow(
-                box(title = "INPATIENT CAPACITY", width = 12, collapsible = T,
-                    infoBoxOutput("red_wards", width = 6),
-                    infoBoxOutput("red_zones", width = 6),
-                    
-                    box(title = "Red and Green Occupancy", collapsible = T, width = 8,
-                      column(width = 4,
-                             infoBoxOutput("shc_occ1", width = NULL),
-                             infoBoxOutput("shc_occ2", width = NULL),
-                             infoBoxOutput("shc_occ3", width = NULL),
-                             infoBoxOutput("shc_occ4", width = NULL)
-                             ),
-                      column(width = 4,
-                             infoBoxOutput("shc_occ5", width = NULL),
-                             infoBoxOutput("shc_occ6", width = NULL)
-                             )
-                      ),
-                    column(width = 4,
-                           box(title ="Planned Care", collapsible = T, width = NULL,
-                               infoBoxOutput("shc_pc", width = NULL)
-                               )
-                           )
-                    
-                    ),
-                box(title = "Women & Children", width = 12, collapsible = T,
-                    column(width = 4,
-                           infoBoxOutput("shc_mat", width = NULL)
-                           ),
-                    column(width = 4,
-                           infoBoxOutput("shc_paeds1", width = NULL),
-                           infoBoxOutput("shc_paeds2", width = NULL),
-                           infoBoxOutput("shc_paeds3", width = NULL)
-                           ),
-                    column(width = 4,
-                           infoBoxOutput("shc_neo1", width = NULL),
-                           infoBoxOutput("shc_neo2", width = NULL),
-                           infoBoxOutput("shc_neo3", width = NULL)
-                    )
-                    )
-                
-                )
+              )
                 
               
               ), #/tabItem "safety COVID-19"
@@ -598,7 +553,7 @@ server <- function(input, output){
     infoBox("Time to Assessment", value = nrc_ed()[[1, 3]], color = "red", icon = icon("stopwatch"))
   })
   output$nrc_ED_4 <- renderInfoBox({
-    infoBox("No. with DTA", value = nrc_ed()[[1, 4]], color = "orange", icon = icon("hospital"))
+    infoBox("Number with DTA", value = nrc_ed()[[1, 4]], color = "orange", icon = icon("hospital"))
   })
   output$nrc_ED_5 <- renderInfoBox({
     infoBox("Breaches since Midnight", value = nrc_ed()[[1, 5]], color = "purple", icon = icon("stopwatch"))
@@ -826,7 +781,7 @@ server <- function(input, output){
   })
   
   output$au1_px <- renderInfoBox({
-    infoBox("Patients Now", value = au()[[1,2]], color = "blue", icon = icon("procedures"))
+    infoBox("Patients Now", value = au()[[1,2]], color = "blue")
   })
   output$au1_beds <- renderInfoBox({
     infoBox("Beds Required", value = au()[[1,3]], color = "orange", icon = icon("bed"))
@@ -842,7 +797,7 @@ server <- function(input, output){
   })
   
   output$au2_px <- renderInfoBox({
-    infoBox("Patients Now", value = au()[[2,2]], color = "blue", icon = icon("procedures"))
+    infoBox("Patients Now", value = au()[[2,2]], color = "blue")
   })
   output$au2_beds <- renderInfoBox({
     infoBox("Beds Required", value = au()[[2,3]], color = "orange", icon = icon("bed"))
@@ -938,165 +893,35 @@ server <- function(input, output){
   })
   
   output$shc_ed1 <- renderInfoBox({
-    infoBox("Total in ED", value = ed_shc()[[1,1]], color = "blue", icon = icon("clipboard"))
+    infoBox("Total in ED", value = ed_shc()[[1,1]], color = "blue")
   })
   
   output$shc_ed2 <- renderInfoBox({
-    infoBox("No. with DTA", value = ed_shc()[[1,2]], color = "blue", icon = icon("hospital"))
+    infoBox("No. with DTA", value = ed_shc()[[1,2]], color = "blue")
   })
   
   output$shc_cc1 <- renderInfoBox({
-    req(input$file2)
     shc_icu_red <- read_excel(input$file2$datapath, sheet = 1, range = "C5:C5", col_names = F)
     
-    infoBox(title = "ICU Red", value = shc_icu_red[[1,1]], color = "red", fill = T, icon = icon("lungs"))
+    infoBox(title = "ICU Red", value = shc_icu_red[[1,1]], color = "red", fill = T)
   })
   
   output$shc_cc2 <- renderInfoBox({
-    req(input$file2)
     shc_icu_green <- read_excel(input$file2$datapath, sheet = 1, range = "E5", col_names = F)
     
-    infoBox(title = "ICU Green", value = shc_icu_green[[1,1]], color = "green", fill = T, icon = icon("lungs"))
+    infoBox(title = "ICU Green", value = shc_icu_green[[1,1]], color = "green", fill = T)
   })
   
   output$shc_cc3 <- renderInfoBox({
-    req(input$file2)
     shc_rhdu <- read_excel(input$file2$datapath, sheet = 1, range = "G5", col_names = F)
     
-    infoBox(title = "Renal HDU", value = shc_rhdu[[1,1]], color = "green", fill = T, icon = icon("weight"))
+    infoBox(title = "Renal HDU", value = shc_rhdu[[1,1]], color = "green", fill = T)
   })
   
   output$shc_cc4 <- renderInfoBox({
-    req(input$file2)
     shc_mhdu <- read_excel(input$file2$datapath, sheet = 1, range = "C6", col_names = F)
     
-    infoBox(title = "MHDU Red", value = shc_mhdu[[1,1]], color = "red", fill = T, icon = icon("stethoscope"))
-  })
-  
-  output$shc_cc5 <- renderInfoBox({
-    req(input$file2)
-    shc_ccu <- read_excel(input$file2$datapath, sheet = 1, range = "E6", col_names = F)
-    
-    infoBox(title = "MHDU/CCU Green", value = shc_ccu[[1,1]], color = "green", fill = T, icon = icon("heartbeat"))
-  })
-  
-  output$shc_cc6 <- renderInfoBox({
-    req(input$file2)
-    shc_shdu <- read_excel(input$file2$datapath, sheet = 1, range = "G6", col_names = F)
-    
-    infoBox(title = "SHDU Green", value = shc_shdu[[1,1]], color = "green", fill = T, icon = icon("head-side-mask"))
-  })
-  
-  output$red_wards <- renderInfoBox({
-    req(input$file2)
-    shc_red_wards <- read_excel(input$file2$datapath, sheet = 1, range = "D8", col_names = F)
-    
-    infoBox(title = "In-Patient Red Wards", value = shc_red_wards[[1,1]], color = "red", icon = icon("microsoft"))
-    
-  })
-  
-  output$red_zones <- renderInfoBox({
-    req(input$file2)
-    shc_red_zones <- read_excel(input$file2$datapath, sheet = 1, range = "D9", col_names = F)
-    
-    infoBox(title = "Wards with Red Zones", value = shc_red_zones[[1,1]], color = "red", icon = icon("microsoft"))
-    
-  })
-  
-  output$shc_occ1 <- renderInfoBox({
-    req(input$file2)
-    shc_aured_occ <- read_excel(input$file2$datapath, sheet = 1, range = "C10", col_names = F)
-    
-  infoBox(title = "Red AU1 Occupancy", value = paste0(round(shc_aured_occ[[1,1]]*100, 1), "%"), color ="red", icon = icon("percent"))  
-    
-  })
-  
-  output$shc_occ2 <- renderInfoBox({
-    req(input$file2)
-    shc_red_avail <- read_excel(input$file2$datapath, sheet = 1, range = "C11", col_names = F)    
-    
-    infoBox(title = "Red Zone Beds Available", value = shc_red_avail[[1,1]], color ="red", icon = icon("bed"))  
-    
-  })
-  
-  output$shc_occ3 <- renderInfoBox({
-    req(input$file2)
-    shc_red_pat <- read_excel(input$file2$datapath, sheet = 1, range = "E11", col_names = F)  
-    
-    infoBox(title = "No. of Red Zone Patients", value = shc_red_pat[[1,1]], color ="red", icon = icon("procedures"))  
-    
-  })
-  
-  output$shc_occ4 <- renderInfoBox({
-    req(input$file2)
-    shc_totalred_occ <- read_excel(input$file2$datapath, sheet = 1, range = "G11", col_names = F)
-    
-    infoBox(title = "Total Red Occupancy", value = paste0(round(shc_totalred_occ[[1,1]]*100, 1), "%"), color ="red", icon = icon("percent"))  
-    
-  })
-  
-  output$shc_occ5 <- renderInfoBox({
-    req(input$file2)
-    shc_augreen_occ <- read_excel(input$file2$datapath, sheet = 1, range = "E10", col_names = F)
-    
-    infoBox(title = "Green AU1 & 2 Occupancy", value = paste0(round(shc_augreen_occ[[1,1]]*100, 1), "%"), color = "green", icon = icon("percent"))
-  })
-  
-  output$shc_occ6 <- renderInfoBox({
-    req(input$file2)
-    shc_totalgreen_occ <- read_excel(input$file2$datapath, sheet = 1, range = "G10", col_names = F)
-    
-    infoBox(title = "Total Occupancy", value = paste0(round(shc_totalgreen_occ[[1,1]]*100, 1), "%"), color = "green", icon = icon("percent"))
-  })
-  
-  output$shc_pc <- renderInfoBox({
-    req(input$file2)
-    shc_pc_urgent <- read_excel(input$file2$datapath, sheet = 1, range = "D13", col_names = F)
-    
-    infoBox(title = "Urgent Planned Care Admissions", value = shc_pc_urgent[[1,1]], color = "orange", icon = icon("ambulance"))
-  })
-  
-  output$shc_mat <- renderInfoBox({
-    req(input$file2)
-    shc_mat_beds <- read_excel(input$file2$datapath, sheet = 1, range = "D16", col_names = F)
-    
-    infoBox(title = "Maternity Empty Beds", value = shc_mat_beds[[1,1]], color = "blue", icon = icon("female"))
-  })
-  
-  shc_paeds_neo <- reactive({
-    req(input$file2)
-    
-    shc_paedsneo <- read_excel(input$file2$datapath, sheet = 1, range = "C18:G20", col_names = F)%>%
-      mutate("Ward" = c("Paeds", NA, "Neonates")) %>%
-      filter(!is.na(...1)) %>% 
-      select(Ward, "Red_Patients" = ...1,
-             "Red_Beds" = ...3, 
-             "Green_Beds" = ...5)
-    return(shc_paedsneo)
-  })
-  
-  output$shc_paeds1 <- renderInfoBox({
-    infoBox(title = "Red Paeds Patients", value = shc_paeds_neo()[[1,2]], color = "red", icon = icon("child"))
-  })
-  
-  output$shc_paeds2 <- renderInfoBox({
-    infoBox(title = "Red Paeds Empty Beds", value = shc_paeds_neo()[[1,3]], color = "red", icon = icon("bed"))
-  })
-  
-  output$shc_paeds3 <- renderInfoBox({
-    infoBox(title = "Green Paeds Empty Beds", value = shc_paeds_neo()[[1,4]], color = "green", icon = icon("bed"))
-  })
-  
-  output$shc_neo1 <- renderInfoBox({
-    infoBox(title = "Red Neonate Patients", value = shc_paeds_neo()[[2,2]], color = "red", icon = icon("baby"))
-  })
-  
-  output$shc_neo2 <- renderInfoBox({
-    infoBox(title = "Red Neonate Empty Beds", value = shc_paeds_neo()[[2,3]], color = "red", icon = icon("bed"))
-  })
-  
-  output$shc_neo3 <- renderInfoBox({
-    infoBox(title = "Green Neonate Empty Beds", value = shc_paeds_neo()[[2,4]], color = "green", icon = icon("bed"))
+    infoBox(title = "MHDU Red", value = shc_mhdu[[1,1]], color = "green", fill = T)
   })
   
   

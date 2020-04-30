@@ -71,3 +71,6 @@ total_both <- data.frame(Ward = "Sum Total",
                          )
 
 sum_flow <- rbind(sum_flow, total_both)
+
+
+

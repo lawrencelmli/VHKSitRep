@@ -3,7 +3,7 @@ library(readxl)
 library(stringr)
 library(stringi)
 
-setwd("D:\\Lawrence\\Documents\\R_Projects\\VHKSitRep")
+setwd("C:\\Users\\lila\\Downloads")
 
 
 # Night Report ------------------------------------------------------------
@@ -111,8 +111,10 @@ colnames(add_nrc) <- c("Ward", "Agreed1", "Agreed2", "USed1", "Used2")
 
 # Safety Huddle -----------------------------------------------------------
 
-shc_ed_total <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "C3:C3", col_names = F)
-shc_dta <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "E3", col_names = F)
+shc_ed <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "B3:E3", col_names = F)
+
+shc_ed <- select(shc_ed, total = 2, DTA = 4)
+
 
 shc_icu_red <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "C5:C5", col_names = F)
 shc_icu_green <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "E5:E5", col_names = F)
@@ -142,7 +144,7 @@ shc_paeds <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "C18:G20", col_
          "Red_Beds" = ...3, 
          "Green_Beds" = ...5) 
   
-shc_care <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "H3:L15", col_names = F, trim_ws = T) %>%
+shc_concerns <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "H3:L15", col_names = F, trim_ws = T) %>%
   filter(!is.na(...1)) %>%
   select("Concerns" = ...1, 
          "Details" = ...5)
@@ -155,7 +157,7 @@ concerns <- c("PATIENTRAK Dashboard (FEWS etc)",
               "Staff Issues - All Groups",
               "Other Concerns")
 
-shc_care$Concerns <- concerns
+shc_concerns$Concerns <- concerns
 
 
 shc_support <- read_excel("COVIDSitRep01.xlsm", sheet = 1, range = "P4:W15", col_names = F, trim_ws = T) %>%
