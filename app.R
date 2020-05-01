@@ -18,12 +18,15 @@ ui <- dashboardPage(
     
     sidebarMenu(
       
-      h4("Report Date: "),
-      textOutput("date_of_report"),
-      
       fileInput("file1", "Upload SitREp Excel"),
       
+      div(style="display: inline-block;vertical-align:top; ", p("Date of SitRep: ")), 
+      div(style="display: inline-block;vertical-align:top; ", textOutput("date_of_report")),
+      
       fileInput("file2", "Upload COVID-19 SitRep Excel"),
+      
+      div(style="display: inline-block;vertical-align:top; ", p("Date of COVID Report: ")), 
+      div(style="display: inline-block;vertical-align:top; ", textOutput("COVID_date")),
       
       menuItem("How to Use", tabName = "instructions", icon = icon("book-open")),
       
@@ -39,7 +42,7 @@ ui <- dashboardPage(
     
       menuItem("19:00", tabName = "seven_pm", icon = icon("clock")),
       
-      menuItem("CoViD-19", icon = icon("lungs-virus"), startExpanded = F,
+      menuItem("CoViD-19", icon = icon("virus"), startExpanded = T,
                
                menuSubItem("Night Capacity Report", tabName = "covid_night", icon = icon("clipboard")),
                menuSubItem("Safety Huddle", tabName = "covid_safety", icon = icon("hard-hat")),
@@ -59,6 +62,7 @@ ui <- dashboardPage(
     
     ), #/dashboardSidebar
   dashboardBody(
+    
     tags$style("@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);"), # to use the latest fontawesome icons
     tabItems(
       tabItem(tabName = "instructions", h3("How to Generate Reports"),
@@ -118,8 +122,6 @@ ui <- dashboardPage(
       tabItem(tabName = "seven_pm", h3("Situation Report at 19:00")), #/tabItem "seven_pm"
       
       tabItem(tabName = "covid_night", h3("Night Capacity Report COVID-19"),
-              div(style="display: inline-block;vertical-align:top; ", p("Date of COVID Report: ")), 
-              div(style="display: inline-block;vertical-align:top; ", textOutput("COVID_date")),
               
               fluidRow(
                 box(title = "OVERALL SUMMARY", width = 12, collapsible = T,
@@ -222,14 +224,14 @@ ui <- dashboardPage(
                     infoBoxOutput("red_wards", width = 6),
                     infoBoxOutput("red_zones", width = 6),
                     
-                    box(title = "Red and Green Occupancy", collapsible = T, width = 8,
-                      column(width = 4,
+                    box(title = "Red and Green Occupancy", collapsible = T, width = 6,
+                      column(width = 6,
                              infoBoxOutput("shc_occ1", width = NULL),
                              infoBoxOutput("shc_occ2", width = NULL),
                              infoBoxOutput("shc_occ3", width = NULL),
                              infoBoxOutput("shc_occ4", width = NULL)
                              ),
-                      column(width = 4,
+                      column(width = 6,
                              infoBoxOutput("shc_occ5", width = NULL),
                              infoBoxOutput("shc_occ6", width = NULL)
                              )
@@ -254,14 +256,135 @@ ui <- dashboardPage(
                            infoBoxOutput("shc_neo1", width = NULL),
                            infoBoxOutput("shc_neo2", width = NULL),
                            infoBoxOutput("shc_neo3", width = NULL)
-                    )
+                           )
                     )
                 
-                )
+                ), #/fluidRow
+              fluidRow(
+                box(width = 5, title = "CARE & TREATMENT CONCERNS", collapsible = T,
+                    htmlOutput("shc_care_con")
+                    ),
+                box(width = 7, title = "SUPPORT SERVICES", collapsible = T,
+                    fluidRow(
+                      infoBoxOutput("shc_ss1", width = 6),
+                      infoBoxOutput("shc_ss2", width = 6),
+                      infoBoxOutput("shc_ss3", width = 6),
+                      infoBoxOutput("shc_ss4", width = 6),
+                      infoBoxOutput("shc_ss5", width = 6),
+                      infoBoxOutput("shc_ss6", width = 6),
+                      infoBoxOutput("shc_ss7", width = 6)
+                      )#/fluidRow
+                    )
+                ) #/fluidRow
+                
+              
                 
               
               ), #/tabItem "safety COVID-19"
-      tabItem(tabName = "covid_eight_thirty", h3("Situation Report at 8:30 COVID-19")), #/tabItem "eight_thirty COVID-19"
+      tabItem(tabName = "covid_eight_thirty", h3("Situation Report at 08:30 COVID-19"),
+              
+              fluidRow(
+                box(title = "08:30 At a Glance", width = 12, collapsible = T,
+                    column(width = 6,
+                      fluidRow(
+                        infoBoxOutput("c830_glance1", width = 6),
+                        infoBoxOutput("c830_glance2", width = 6)
+                        ),
+                      fluidRow(
+                        infoBoxOutput("c830_glance4", width = 6),
+                        infoBoxOutput("c830_glance5", width = 6)
+                        ),
+                      fluidRow(
+                        infoBoxOutput("c830_glance7", width = 6)
+                        )
+                      ),
+                    column(width = 6,
+                           fluidRow(infoBoxOutput("c830_glance3", width = 4)),
+                           fluidRow(infoBoxOutput("c830_glance6", width = 4)),
+                           fluidRow(infoBoxOutput("c830_glance8", width = 4))
+                           )
+                    )
+              ), #/fluidRow
+              
+              fluidRow(
+                box(title = "EMERGENCY DEPARTMENT", width = 12, collapsible = T,
+                    infoBoxOutput("c830_ed1", width = 2),
+                    infoBoxOutput("c830_ed2", width = 2),
+                    infoBoxOutput("c830_ed3", width = 2),
+                    infoBoxOutput("c830_ed4", width = 2),
+                    infoBoxOutput("c830_ed5", width = 2),
+                    infoBoxOutput("c830_ed6", width = 3),
+                    infoBoxOutput("c830_ed7", width = 3),
+                    infoBoxOutput("c830_ed8", width = 2)
+                    )
+              ),
+              
+              
+              fluidRow(
+                box(title = "FLOW", width = 12, collapsible = T,
+                    fluidRow(
+                      box(title = "Flow - Summary", width = 12, collapsible = T,
+                          infoBoxOutput("c830_fl_sum1", width = 3),
+                          infoBoxOutput("c830_fl_sum2", width = 3),
+                          infoBoxOutput("c830_fl_sum3", width = 3),
+                          infoBoxOutput("c830_fl_sum4", width = 3),
+                          infoBoxOutput("c830_fl_sum5", width = 3),
+                          infoBoxOutput("c830_fl_sum6", width = 3),
+                          infoBoxOutput("c830_fl_sum7", width = 3),
+                          infoBoxOutput("c830_fl_sum8", width = 3),
+                          infoBoxOutput("c830_fl_sum9", width = 3),
+                          infoBoxOutput("c830_fl_sum10", width = 2),
+                          infoBoxOutput("c830_fl_sum11", width = 2)
+                          )
+                      ),
+                    
+                    fluidRow(
+                      box(title = "Red Zones", width = 6, collapsible = T, background = "red", collapsed = T,
+                          htmlOutput("c830_red_flow")
+                          ),
+                      box(title = "Green Zones", width = 6, collapsible = T, background = "green", collapsed = T,
+                          htmlOutput("c830_green_flow")
+                          ),
+                      box(title = "Women and Children", width = 6, collapsible = T, collapsed = T,
+                          htmlOutput("c830_wac_flow")
+                          ),
+                      box(title = "Critical Care", width = 6, collapsible = T, collapsed = T,
+                          htmlOutput("c830_cc_flow"))
+                      )
+                    )
+              ),
+              
+              fluidRow(
+                box(title = "Assessment Units", width = 12, collapsible = T,
+                    box(title = "AU One", width = 6, collapsible = T,
+                        column(width = 6,
+                               infoBoxOutput("c830_au11", width = NULL),
+                               infoBoxOutput("c830_au12", width = NULL),
+                               infoBoxOutput("c830_au13", width = NULL)
+                               ),
+                        column(width = 6,
+                               infoBoxOutput("c830_au14", width = NULL),
+                               infoBoxOutput("c830_au15", width = NULL)
+                               )
+                        ),
+
+                    
+                    box(title = "AU Two", width = 6, collapsible = T,
+                        column(width = 6,
+                               infoBoxOutput("c830_au21", width = NULL),
+                               infoBoxOutput("c830_au22", width = NULL),
+                               infoBoxOutput("c830_au23", width = NULL)
+                               ),
+                        column(width = 6,
+                               infoBoxOutput("c830_au24", width = NULL),
+                               infoBoxOutput("c830_au25", width = NULL)
+                               )
+                        )
+                    )
+                )
+
+              
+              ), #/tabItem "eight_thirty COVID-19"
       tabItem(tabName = "covid_one_pm", h3("Situation Report at 13:00 COVID-19")), #/tabItem "one_pm COVID-19"
       tabItem(tabName = "covid_five_pm", h3("Situation Report at 17:00 COVID-19")), #/tabItem "five_pm" COVID-19
       tabItem(tabName = "covid_seven_pm", h3("Situation Report at 19:00 COVID-19"))
@@ -269,7 +392,47 @@ ui <- dashboardPage(
   ) #/dashboardBody
 ) #/dashboardPage
 
+
+# SERVER ------------------------------------------------------------------
+
 server <- function(input, output){
+  
+  colour_numbers <- function(x){
+    if (x > 0){
+      colour <- "red"
+    }else{
+      colour <- "light-blue"
+    }
+    return(colour)
+  }
+  
+  colour_breaches <- function(x){
+    if (x > 0){
+      colour <- "purple"
+    }else{
+      colour <- "green"
+    }
+    return(colour)
+  }
+  
+  colour_rn <- function(x){
+    if (x > 0){
+      colour <- "red"
+    }else{
+      colour <- "green"
+    }
+    return(colour)
+  }
+  
+  colour_safe <- function(x){
+    if(x == "Yes" | x == "Y" | x == "yes" | x == "y"){
+      colour <- "green"
+    }else{
+      colour <- "red"
+    }
+    return(colour)
+  }
+  
   reportDate <- reactive({
     
     req(input$file1)
@@ -380,7 +543,7 @@ server <- function(input, output){
     if(night_medicine()[[15, 3]] >= 30){
       colour <- "green"
     }else if(night_medicine()[[15, 3]] >= 15 & night_medicine()[[15, 3]] < 30){
-      colour <- "orange"
+      colour <- "yellow"
     }else if(night_medicine()[[15, 3]] < 15){
       colour <- "red"
     }
@@ -389,7 +552,7 @@ server <- function(input, output){
   })
   
   colour_empty_ward <- function(x) {
-    cut(as.numeric(x), breaks=c(-Inf, 5, 10, Inf), labels=c("red","orange","green"), right = FALSE)
+    cut(as.numeric(x), breaks=c(-Inf, 5, 10, Inf), labels=c("red","yellow","green"), right = FALSE)
   }
   
   output$med_empty <- renderInfoBox({
@@ -548,7 +711,7 @@ server <- function(input, output){
       if(nrc_summary()[[6, 2]] >= 15){
         colour <- "green"
       }else if(nrc_summary()[[6, 2]] < 15 & nrc_summary()[[6, 2]] >= 10){
-        colour <- "orange"
+        colour <- "yellow"
       }else if(nrc_summary()[[6, 2]] < 10){
         colour <- "red"
       }
@@ -592,16 +755,16 @@ server <- function(input, output){
     infoBox("Total Number", value = nrc_ed()[[1, 1]], color = "blue", icon = icon("procedures"))
   })
   output$nrc_ED_2 <- renderInfoBox({
-    infoBox("Longest Wait", value = nrc_ed()[[1, 2]], color = "red", icon = icon("clock"))
+    infoBox("Longest Wait", value = nrc_ed()[[1, 2]], color = "yellow", icon = icon("clock"))
   })
   output$nrc_ED_3 <- renderInfoBox({
-    infoBox("Time to Assessment", value = nrc_ed()[[1, 3]], color = "red", icon = icon("stopwatch"))
+    infoBox("Time to Assessment", value = nrc_ed()[[1, 3]], color = "yellow", icon = icon("stopwatch"))
   })
   output$nrc_ED_4 <- renderInfoBox({
-    infoBox("No. with DTA", value = nrc_ed()[[1, 4]], color = "orange", icon = icon("hospital"))
+    infoBox("No. with DTA", value = nrc_ed()[[1, 4]], color = colour_numbers(nrc_ed()[[1, 4]]), icon = icon("hospital"))
   })
   output$nrc_ED_5 <- renderInfoBox({
-    infoBox("Breaches since Midnight", value = nrc_ed()[[1, 5]], color = "purple", icon = icon("stopwatch"))
+    infoBox("Breaches since Midnight", value = nrc_ed()[[1, 5]], color = colour_breaches(nrc_ed()[[1, 5]]), icon = icon("stopwatch"))
   })
   
   nrc_flow <- reactive({
@@ -829,13 +992,13 @@ server <- function(input, output){
     infoBox("Patients Now", value = au()[[1,2]], color = "blue", icon = icon("procedures"))
   })
   output$au1_beds <- renderInfoBox({
-    infoBox("Beds Required", value = au()[[1,3]], color = "orange", icon = icon("bed"))
+    infoBox("Beds Required", value = au()[[1,3]], color = "yellow", icon = icon("bed"))
   })
   output$au1_dc <- renderInfoBox({
     infoBox("Discharges", value = au()[[1,4]], color = "green", icon = icon("home"))
   })
   output$au1_ongoing <- renderInfoBox({
-    infoBox("Ongoing Assessment", value = au()[[1,5]], color = "orange", icon = icon("clipboard"))
+    infoBox("Ongoing Assessment", value = au()[[1,5]], color = "yellow", icon = icon("clipboard"))
   })
   output$au1_gp <- renderInfoBox({
     infoBox("To Come In", value = au()[[1,6]], color = "red", icon = icon("ambulance"))
@@ -845,13 +1008,13 @@ server <- function(input, output){
     infoBox("Patients Now", value = au()[[2,2]], color = "blue", icon = icon("procedures"))
   })
   output$au2_beds <- renderInfoBox({
-    infoBox("Beds Required", value = au()[[2,3]], color = "orange", icon = icon("bed"))
+    infoBox("Beds Required", value = au()[[2,3]], color = "yellow", icon = icon("bed"))
   })
   output$au2_dc <- renderInfoBox({
     infoBox("Discharges", value = au()[[2,4]], color = "green", icon = icon("home"))
   })
   output$au2_ongoing <- renderInfoBox({
-    infoBox("Ongoing Assessment", value = au()[[2,5]], color = "orange", icon = icon("clipboard"))
+    infoBox("Ongoing Assessment", value = au()[[2,5]], color = "yellow", icon = icon("clipboard"))
   })
   output$au2_gp <- renderInfoBox({
     infoBox("To Come In", value = au()[[2,6]], color = "red", icon = icon("ambulance"))
@@ -871,11 +1034,11 @@ server <- function(input, output){
     
     critcare_nrc <- critcare_nrc %>%
       select("Ward" = Ward,
+             "Bed Compliment" = Compliment,
              "Empty Beds" = Empty,
              "Fit for Discharge" = Fit,
              "Admissions Today" = Admissions,
-             "Discharges Expected" = Discharges,
-             "Bed Compliment" = Compliment)
+             "Discharges Expected" = Discharges)
     
     kable(critcare_nrc, "html") %>%
       kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
@@ -984,14 +1147,14 @@ server <- function(input, output){
     req(input$file2)
     shc_shdu <- read_excel(input$file2$datapath, sheet = 1, range = "G6", col_names = F)
     
-    infoBox(title = "SHDU Green", value = shc_shdu[[1,1]], color = "green", fill = T, icon = icon("head-side-mask"))
+    infoBox(title = "SHDU Green", value = shc_shdu[[1,1]], color = "green", fill = T, icon = icon("user-injured"))
   })
   
   output$red_wards <- renderInfoBox({
     req(input$file2)
     shc_red_wards <- read_excel(input$file2$datapath, sheet = 1, range = "D8", col_names = F)
     
-    infoBox(title = "In-Patient Red Wards", value = shc_red_wards[[1,1]], color = "red", icon = icon("microsoft"))
+    infoBox(title = "In-Patient Red Wards", value = shc_red_wards[[1,1]], color = "red", icon = icon("grip-horizontal"))
     
   })
   
@@ -999,7 +1162,7 @@ server <- function(input, output){
     req(input$file2)
     shc_red_zones <- read_excel(input$file2$datapath, sheet = 1, range = "D9", col_names = F)
     
-    infoBox(title = "Wards with Red Zones", value = shc_red_zones[[1,1]], color = "red", icon = icon("microsoft"))
+    infoBox(title = "Wards with Red Zones", value = shc_red_zones[[1,1]], color = "maroon", icon = icon("grip-horizontal"))
     
   })
   
@@ -1053,7 +1216,7 @@ server <- function(input, output){
     req(input$file2)
     shc_pc_urgent <- read_excel(input$file2$datapath, sheet = 1, range = "D13", col_names = F)
     
-    infoBox(title = "Urgent Planned Care Admissions", value = shc_pc_urgent[[1,1]], color = "orange", icon = icon("ambulance"))
+    infoBox(title = "Urgent Planned Care Admissions", value = shc_pc_urgent[[1,1]], color = "yellow", icon = icon("ambulance"))
   })
   
   output$shc_mat <- renderInfoBox({
@@ -1099,6 +1262,605 @@ server <- function(input, output){
     infoBox(title = "Green Neonate Empty Beds", value = shc_paeds_neo()[[2,4]], color = "green", icon = icon("bed"))
   })
   
+  shc_care <- reactive({
+    req(input$file2)
+    shc_concerns <- read_excel(input$file2$datapath, sheet = 1, range = "H3:L15", col_names = F, trim_ws = T) %>%
+      filter(!is.na(...1)) %>%
+      select("Concerns" = ...1, 
+             "Details" = ...5)
+    
+    concerns <- c("PATIENTRAK Dashboard (FEWS etc)", 
+                  "Other Clinical Concerns",
+                  "Urgent COVID-19 Updates",
+                  "PPE/Procurement Update",
+                  "Staff Issues - All Groups",
+                  "Other Concerns")
+    
+    shc_concerns$Concerns <- concerns
+    
+    return(shc_concerns)
+  })
+  
+  output$shc_care_con <- renderText({
+    care_kable <- shc_care()
+    
+    kable(care_kable, "html") %>%
+      kable_styling(full_width = T, font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#f0e2c3", color = "#090b15") %>%
+      row_spec(1:4, align = "left", background = "#c8c26c") %>%
+      row_spec(5:6, align = "left", background = "#e8bd8b") %>%
+      column_spec(1, bold = T, color = "#1c2039", width = "12em") %>%
+      column_spec(2, bold = "F", background = "#ca6454", color = "white")
+    
+  })
+  
+  shc_ss <- reactive({
+    req(input$file2)
+    
+    shc_support <- read_excel(input$file2$datapath, sheet = 1, range = "P4:W15", col_names = F, trim_ws = T) %>%
+      filter(!is.na(...1)) %>%
+      select("Department" = ...1,
+             "Details" = ...5)
+    
+    shc_support[3,1] <- "INFECTION PREVENTION & CONTROL (EXT 28102)"
+    
+    return(shc_support)
+  })
+  
+  output$shc_ss1 <- renderInfoBox({
+    infoBox(title = "Laboratories (Ext 28102)", value = shc_ss()[[1, 2]], color = "navy", icon = icon("microscope"))
+  })
+  
+  output$shc_ss2 <- renderInfoBox({
+    infoBox(title = "Radiology (Ext 28325)", value = shc_ss()[[2, 2]], color = "navy", icon = icon("x-ray"))
+  })
+  
+  output$shc_ss3 <- renderInfoBox({
+    infoBox(title = "Infection Prevention & Control (Ext 28102)", value = shc_ss()[[3, 2]], color = "fuchsia", icon = icon("shield-virus"))
+  })
+  
+  output$shc_ss4 <- renderInfoBox({
+    infoBox(title = "Pharmacy (Ext 21052)", value = shc_ss()[[4, 2]], color = "olive", icon = icon("prescription"))
+  })
+  
+  output$shc_ss5 <- renderInfoBox({
+    infoBox(title = "Estates, Portering & Facilities", value = shc_ss()[[5, 2]], color = "teal", icon = icon("wrench"))
+  })
+  
+  output$shc_ss6 <- renderInfoBox({
+    infoBox(title = "Discharge Hub (Ext 23990)", value = shc_ss()[[6, 2]], color = "blue", icon = icon("home"))
+  })
+  
+  output$shc_ss7 <- renderInfoBox({
+    infoBox(title = "Procurement (Ext 21346)", value = shc_ss()[[7, 2]], color = "teal", icon = icon("shopping-cart"))
+  })
+  
+
+# COVID 8:30 --------------------------------------------------------------
+
+  c830_glance <- reactive({
+    req(input$file2)
+    
+    covid830_sum <- read_excel(input$file2$datapath, sheet = 3, range = "B7:E14", col_names = F) %>%
+      select(1, 4)
+    
+    return(covid830_sum)
+  })  
+  
+  output$c830_glance1 <- renderInfoBox({
+    infoBox(title = "Electives", value = c830_glance()[[1,2]], icon = icon("clipboard-list"), color = "blue", fill = T)
+  })
+  
+  output$c830_glance2 <- renderInfoBox({
+    infoBox(title = "Predicted Emergency Admissions", value = c830_glance()[[2,2]], icon = icon("hospital"), color = "yellow", fill = T)
+  })
+  
+  output$c830_glance3 <- renderInfoBox({
+    infoBox(title = "Total", value = c830_glance()[[3,2]], icon = icon("plus-square"), color = "navy", fill = T)
+  })
+  
+  output$c830_glance4 <- renderInfoBox({
+    infoBox(title = "Emergency Admissions So Far", value = c830_glance()[[4,2]], icon = icon("ambulance"), color = "maroon", fill = T)
+  })
+  
+  output$c830_glance5 <- renderInfoBox({
+    infoBox(title = "Remaining Today", value = c830_glance()[[5,2]], icon = icon("clipboard"), color = "maroon", fill = T)
+  })
+  
+  output$c830_glance6 <- renderInfoBox({
+    infoBox(title = "Beds Available Now", value = c830_glance()[[6,2]], icon = icon("bed"), color = "navy", fill = T)
+  })
+  
+  output$c830_glance7 <- renderInfoBox({
+    infoBox(title = "Expected Discharges", value = c830_glance()[[7,2]], icon = icon("home"), color = "green", fill = T)
+  })
+  
+  output$c830_glance8 <- renderInfoBox({
+    infoBox(title = "Predicted Balance", value = c830_glance()[[7,2]], icon = icon("balance-scale"), color = "navy", fill = T)
+  })
+  
+  c830_ed <- reactive({
+    req(input$file2)
+    
+    covid830_ed <- read_excel(input$file2$datapath, sheet = 3, range = "L19:S19", col_names = F)
+    
+    if(!is.character(covid830_ed$...2)){
+      covid830_ed$...2 <- format(covid830_ed$...2, "%T")
+    }else{
+      covid830_ed$...2 <- covid830_ed$...2
+    }
+    
+    if(!is.character(covid830_ed$...3)){
+      covid830_ed$...3 <- format(covid830_ed$...3, "%T")
+    }else{
+      covid830_ed$...3 <- covid830_ed$...3
+    }
+    
+    return(covid830_ed)
+  })
+  
+  
+  
+  output$c830_ed1 <- renderInfoBox({
+    infoBox(title = "Total No. in ED", value = c830_ed()[[1,1]], icon = icon("procedures"), color = "blue")
+  })
+  
+  output$c830_ed2 <- renderInfoBox({
+    infoBox(title = "Longest Wait", value = c830_ed()[[1,2]], icon = icon("clock"), color = "yellow")
+  })
+  
+  output$c830_ed3 <- renderInfoBox({
+    infoBox(title = "Time to Assessment", value = c830_ed()[[1,3]], icon = icon("stopwatch"), color = "yellow")
+  })
+  
+  output$c830_ed4 <- renderInfoBox({
+    infoBox(title = "No. with DTA", value = c830_ed()[[1,4]], icon = icon("hospital"), color = colour_numbers(c830_ed()[[1,4]]), fill = T)
+  })
+  
+  output$c830_ed5 <- renderInfoBox({
+    infoBox(title = "Breaches since Midnight", value = c830_ed()[[1,5]], icon = icon("stopwatch"), color = colour_breaches(c830_ed()[[1,5]]), fill = T)
+  })
+  
+  output$c830_ed6 <- renderInfoBox({
+    infoBox(title = "RN Shortfall", value = c830_ed()[[1,6]], icon = icon("user-nurse"), color = colour_rn(c830_ed()[[1,6]]), fill = T)
+  })
+  
+  output$c830_ed7 <- renderInfoBox({
+    infoBox(title = "Night RN Shortfall", value = c830_ed()[[1,7]], icon = icon("user-nurse"), color = colour_rn(c830_ed()[[1,7]]), fill = T)
+  })
+  
+  output$c830_ed8 <- renderInfoBox({
+    infoBox(title = "Safe to Start", value = c830_ed()[[1,8]], icon = icon("user-nurse"), color = colour_safe(c830_ed()[[1,8]]), fill = T)
+  })
+  
+  output$c830_fl_sum1 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "C47", col_names = F)
+    
+    infoBox("Total Green Bed Compliment", value = val[[1,1]], color = "green", icon = icon("grip-horizontal"))
+  })
+  
+  output$c830_fl_sum2 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "E47", col_names = F)
+    
+    infoBox("Total Green Empty Beds", value = val[[1,1]], color = "green", icon = icon("bed"))
+  })
+  
+  output$c830_fl_sum3 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "G47", col_names = F)
+    
+    infoBox("Green Zone Occupancy", value = paste0(round(val[[1,1]]*100, 1), "%"), color = "green", icon = icon("percent"))
+  })
+  
+  output$c830_fl_sum4 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "I47", col_names = F)
+    
+    infoBox("Green AU1 & 2 Occupancy", value = paste0(round(val[[1,1]]*100, 1), "%"), color = "green", icon = icon("percent"))
+  })
+  
+  output$c830_fl_sum5 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "C48", col_names = F)
+    
+    infoBox("Total Red Empty Beds", value = val[[1,1]], color = "red", icon = icon("grip-horizontal"))
+  })
+  
+  output$c830_fl_sum6 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "E48", col_names = F)
+    
+    infoBox("Total Red Empty Beds", value = val[[1,1]], color = "red", icon = icon("bed"))
+  })
+  
+  output$c830_fl_sum7 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "G48", col_names = F)
+    
+    infoBox("Red Zone Patients", value = val[[1,1]], color = "red", icon = icon("procedures"))
+  })
+  
+  output$c830_fl_sum8 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "I48", col_names = F)
+    
+    infoBox("Red Zone Occupancy", value = paste0(round(val[[1,1]]*100, 1), "%"), color = "red", icon = icon("percent"))
+  })
+  
+  output$c830_fl_sum9 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "M47", col_names = F)
+    
+    infoBox("Red AU1 Occupancy", value = paste0(round(val[[1,1]]*100, 1), "%"), color = "red", icon = icon("percent"))
+  })
+  
+  output$c830_fl_sum10 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "E43", col_names = F)
+    
+    infoBox("SEAL Electives", value = val[[1,1]], color = "blue", icon = icon("procedures"))
+  })
+  
+  output$c830_fl_sum11 <- renderInfoBox({
+    req(input$file2)
+    
+    val <- read_excel(input$file2$datapath, sheet = 3, range = "E45", col_names = F)
+    
+    infoBox("Trauma List", value = val[[1,1]], color = "blue", icon = icon("procedures"))
+  })
+  
+  c830_flow <- reactive({
+    columns_830 <- c("Ward", 
+                     "Compliment",
+                     "Empty",
+                     "Electives",
+                     "DC_Expected",
+                     "DC_Achieved",
+                     "RN",
+                     "nRN",
+                     "Safe")
+    
+    covid830_flow <- read_excel("COVIDSitRep01.xlsm", sheet = 3, range = "B19:J41", col_names = F)
+    
+    colnames(covid830_flow) <- columns_830
+    
+    covid830_flow$Empty <- as.numeric(covid830_flow$Empty)
+    
+    redzones_830 <- c("AU1", "22", "34", "41", "43", "51", "53")
+    
+    covid830_flow <- covid830_flow %>%
+      mutate("RedZone" = ifelse(Ward %in% redzones_830, T, F))
+    
+    return(covid830_flow)
+  })
+  
+  output$c830_red_flow <- renderText({
+    
+    df <- c830_flow() 
+    
+    red.df <- df %>%
+      filter(RedZone == T) %>%
+      mutate(Empty.col = cell_spec(Empty, background = if_else(Empty > 5, "#56b34b", "#c64040", "#1b1c21")),
+             RN.col = cell_spec(RN, background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             nRN.col = cell_spec(nRN, background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             Safe.col = cell_spec(Safe, background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+             ) %>%
+      select("Ward" = Ward,
+             "Bed Compliment" = Compliment,
+             "Empty Beds" = Empty.col,
+             "Elecives" = Electives,
+             "Discharges Expected" = DC_Expected,
+             "Discharges Achieved" = DC_Achieved,
+             "RN Shortfall" = RN.col,
+             "nRN Shortfall" = nRN.col,
+             "Safe to Start" = Safe.col)
+    
+    kable(red.df, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(red.df), align = "center") %>%
+      column_spec(1, bold = T) %>%
+      column_spec(c(2:6), background = "#edf5f9", color = "black") %>%
+      column_spec(7:9, background = "#f4caa1", color = "white")
+    
+  })
+  
+  
+  output$c830_green_flow <- renderText({
+    
+    df <- c830_flow() 
+    
+    green.df <- df %>%
+      filter(RedZone == F) %>%
+      mutate(Empty.col = cell_spec(Empty, background = if_else(Empty > 5, "#56b34b", "#c64040", "#1b1c21")),
+             RN.col = cell_spec(RN, background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             nRN.col = cell_spec(nRN, background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             Safe.col = cell_spec(Safe, background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+            ) %>%
+      select("Ward" = Ward,
+             "Bed Compliment" = Compliment,
+             "Empty Beds" = Empty.col,
+             "Elecives" = Electives,
+             "Discharges Expected" = DC_Expected,
+             "Discharges Achieved" = DC_Achieved,
+             "RN Shortfall" = RN.col,
+             "nRN Shortfall" = nRN.col,
+             "Safe to Start" = Safe.col)
+    
+    kable(green.df, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(green.df), align = "center") %>%
+      column_spec(1, bold = T) %>%
+      column_spec(c(2:6), background = "#edf5f9", color = "black") %>%
+      column_spec(7:9, background = "#f4caa1", color = "white")
+    
+  })
+  
+  c830_wac <- reactive({
+    req(input$file2)
+    
+    covid830_wac <- read_excel(input$file2$datapath, sheet = 3, range = "B52:J62", col_names = F)
+    
+    colnames(covid830_wac) <- c("Ward", 
+                                "Compliment",
+                                "Empty",
+                                "Electives",
+                                "DC_Expected",
+                                "DC_Achieved",
+                                "RN",
+                                "nRN",
+                                "Safe")
+    
+    covid830_wac[, 1] <- c("Delivery Suite Red",
+                           "Observation Unit Red",
+                           "Maternity Ward Red",
+                           "Delivery Suite",
+                           "IOL",
+                           "Observation Unit",
+                           "Maternity Ward",
+                           "Children's Ward",
+                           "Children's Ward Red",
+                           "Neonatal Unit",
+                           "Neonatal Unit Red")
+    
+    red_wac <- c("Delivery Suite Red",
+                 "Observation Unit Red",
+                 "Maternity Ward Red",
+                 "Children's Ward Red",
+                 "Neonatal Unit Red")
+    
+    covid830_wac <- covid830_wac %>%
+      mutate("RedZones" = ifelse(Ward %in% red_wac, T, F))
+    
+    return(covid830_wac)
+  })
+  
+  
+  output$c830_wac_flow <- renderText({
+    wac.df <- c830_wac() %>%
+      mutate(Empty.col = cell_spec(Empty, background = if_else(Empty > 5, "#56b34b", "#c64040", "#1b1c21")),
+             RN.col = cell_spec(RN, background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             nRN.col = cell_spec(nRN, background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             Safe.col = cell_spec(Safe, background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select("Ward" = Ward,
+             "Bed Compliment" = Compliment,
+             "Empty Beds" = Empty.col,
+             "Elecives" = Electives,
+             "Discharges Expected" = DC_Expected,
+             "Discharges Achieved" = DC_Achieved,
+             "RN Shortfall" = RN.col,
+             "nRN Shortfall" = nRN.col,
+             "Safe to Start" = Safe.col)
+    
+    kable(wac.df, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(c(1:3, 9, 11), align = "center", background = "#c64040") %>%
+      row_spec(c(4:8, 10), align = "center", background = "#56b34b") %>%
+      column_spec(1, bold = T, color = "white") %>%
+      column_spec(c(2:6), background = "#edf5f9", color = "black") %>%
+      column_spec(7:9, background = "#f4caa1", color = "white")
+  })
+  
+  c830_cc <- reactive({
+    req(input$file2)
+    covid830_cc <- read_excel(input$file2$datapath, sheet = 3, range = "L26:T31", col_names = F)
+    
+    columns_cc <- c("Ward",
+                    "Empty",
+                    "Fit",
+                    "Admissions",
+                    "DC_Expected",
+                    "RN",
+                    "nRN",
+                    "Safe",
+                    "Compliment")
+    
+    colnames(covid830_cc) <- columns_cc
+    
+    covid830_cc$Empty <- as.numeric(covid830_cc$Empty)
+    
+    covid830_cc[, 1] <- c("ICU Red",
+                         "ICU Green",
+                         "SHDU Green",
+                         "MHDU Red",
+                         "RHDU",
+                         "CCU/MHDU Green")
+    
+    return(covid830_cc)
+  })
+  
+  output$c830_cc_flow <- renderText({
+    
+    df.cc <- c830_cc() %>%
+      mutate(RN.col = cell_spec(RN, background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             nRN.col = cell_spec(nRN, background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
+             Safe.col = cell_spec(Safe, background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+            ) %>%
+      select("Ward" = Ward,
+             "Bed Compliment" = Compliment,
+             "Empty Beds" = Empty,
+             "Admissions Today" = Admissions,
+             "Discharges Expected" = DC_Expected,
+             "RN Shortfall" = RN.col,
+             "nRN Shortfall" = nRN.col,
+             "Safe to Start" = Safe.col)
+    
+    kable(df.cc, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(c(1, 4), align = "center", background = "#c64040") %>%
+      row_spec(c(2, 3, 5:6), align = "center", background = "#56b34b") %>%
+      column_spec(1, bold = T, color = "white") %>%
+      column_spec(c(2:5), background = "#edf5f9", color = "black") %>%
+      column_spec(6:8, background = "#f4caa1", color = "white")
+  })
+  
+  c830_au1 <- reactive({
+    req(input$file2)
+    covid830_au1 <- read_excel(input$file2$datapath, sheet = 3, range = "L37:P39", col_names = F)
+    
+    return(covid830_au1)
+  })
+
+  output$c830_au11 <- renderInfoBox({
+    df <- c830_au1()
+    
+    df <- filter(df, !is.na(...1)) %>%
+      select(...1)
+    
+    val <- df[[1, 1]]
+    
+    infoBox(title = "Patients Now", value = val, color = "blue", icon = icon("hospital-user"))
+  })
+  
+  output$c830_au12 <- renderInfoBox({
+    df <- c830_au1()
+    
+    df <- filter(df, !is.na(...2)) %>%
+      select(...2)
+    
+    val <- df[[1, 1]]
+    
+    colour <- ifelse(val == 0, "green", "yellow")
+    
+    infoBox(title = "Bed Required", value = val, color = colour, icon = icon("bed"))
+  })
+  
+  output$c830_au13 <- renderInfoBox({
+    df <- c830_au1()
+    
+    df <- filter(df, !is.na(...3)) %>%
+      select(...3)
+    
+    val <- df[[1, 1]]
+    
+    infoBox(title = "Discharges", value = val, color = "green", icon = icon("home"))
+  })
+  
+  output$c830_au14 <- renderInfoBox({
+    df <- c830_au1()
+    
+    df <- filter(df, !is.na(...4)) %>%
+      select(...4)
+    
+    val <- df[[1, 1]]
+    
+    infoBox(title = "Ongoing Assessment", value = val, color = "yellow", icon = icon("clipboard"))
+  })
+  
+  output$c830_au15 <- renderInfoBox({
+    df <- c830_au1()
+    
+    df <- filter(df, !is.na(...5)) %>%
+      select(...5)
+    
+    val <- df[[1, 1]]
+    
+    colour <- ifelse(val == 0, "green", "red")
+    
+    infoBox(title = "To Come In", value = val, color = colour, icon = icon("ambulance"))
+  })
+  
+  c830_au2 <- reactive({
+    req(input$file2)
+    covid830_au2 <- read_excel(input$file2$datapath, sheet = 3, range = "L43:P44", col_names = F)
+    
+    return(covid830_au2)
+  })
+  
+  output$c830_au21 <- renderInfoBox({
+    df <- c830_au2()
+    
+    df <- filter(df, !is.na(...1)) %>%
+      select(...1)
+    
+    val <- df[[1, 1]]
+    
+    infoBox(title = "Patients Now", value = val, color = "blue", icon = icon("hospital-user"))
+  })
+  
+  output$c830_au22 <- renderInfoBox({
+    df <- c830_au2()
+    
+    df <- filter(df, !is.na(...2)) %>%
+      select(...2)
+    
+    val <- df[[1, 1]]
+    
+    colour <- ifelse(val == 0, "green", "yellow")
+    
+    infoBox(title = "Bed Required", value = val, color = colour, icon = icon("bed"))
+  })
+  
+  output$c830_au23 <- renderInfoBox({
+    df <- c830_au2()
+    
+    df <- filter(df, !is.na(...3)) %>%
+      select(...3)
+    
+    val <- df[[1, 1]]
+    
+    infoBox(title = "Discharges", value = val, color = "green", icon = icon("home"))
+  })
+  
+  output$c830_au24 <- renderInfoBox({
+    df <- c830_au2()
+    
+    df <- filter(df, !is.na(...4)) %>%
+      select(...4)
+    
+    val <- df[[1, 1]]
+    
+    infoBox(title = "Ongoing Assessment", value = val, color = "yellow", icon = icon("clipboard"))
+  })
+  
+  output$c830_au25 <- renderInfoBox({
+    df <- c830_au2()
+    
+    df <- filter(df, !is.na(...5)) %>%
+      select(...5)
+    
+    val <- df[[1, 1]]
+    
+    colour <- ifelse(val == 0, "green", "red")
+    
+    infoBox(title = "To Come In", value = val, color = colour, icon = icon("bed"))
+  })
   
 }
 

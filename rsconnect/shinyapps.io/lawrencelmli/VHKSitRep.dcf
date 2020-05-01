@@ -5,9 +5,9 @@ account: lawrencelmli
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2178173
-bundleId: 3083289
+bundleId: 3087363
 url: https://lawrencelmli.shinyapps.io/VHKSitRep/
-when: 1588196036.72117
+when: 1588277080.42598
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: .gitattributes|app_290420.R|app_sdash.R|app_sdash_with_COVID.R|app_shiny.R|app_version0.1.R|COVIDSitRep01.xlsm|dataExtract.R|dataExtract_covid.R|object_names|README.md|SitRep01.xlsm|SitRep02.xlsm|stackoverflow.R|test_script.R
+ignoredFiles: .gitattributes|~$COVIDSitRep01.xlsm|app_290420.R|app_sdash.R|app_sdash_with_COVID.R|app_shiny.R|app_version0.1.R|COVIDSitRep01.xlsm|dataExtract.R|dataExtract_covid.R|dataExtract_covid_830.R|object_names|README.md|SitRep01.xlsm|SitRep02.xlsm|stackoverflow.R|test_script.R

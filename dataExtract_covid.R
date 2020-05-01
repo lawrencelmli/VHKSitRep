@@ -3,7 +3,7 @@ library(readxl)
 library(stringr)
 library(stringi)
 
-setwd("C:\\Users\\lila\\Downloads")
+setwd("D:\\Lawrence\\Documents\\R_Projects\\VHKSitRep")
 
 
 # Night Report ------------------------------------------------------------
