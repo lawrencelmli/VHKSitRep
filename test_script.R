@@ -73,8 +73,7 @@ total_both <- data.frame(Ward = "Sum Total",
 sum_flow <- rbind(sum_flow, total_both)
 
 
-mutate(Empty.col = cell_spec(Empty, background = if_else(Empty > 0, "#56b34b", "#c64040", "#1b1c21")),
-       RN.col = cell_spec(RN, background = if_else(RN > 0, "#56b34b", "#c64040", "#1b1c21")),
-       nRN.col = cell_spec(nRN, background = if_else(nRN > 0, "#56b34b", "#c64040", "#1b1c21")),
-       Safe.col = cell_spec(Safe, background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#56b34b", "#c64040", "#1b1c21"))
-) %>%
+covid17_sum <- read_excel("COVIDSitRep01.xlsm", sheet = 7, range = "B7:E14", col_names = F) %>%
+  select(1, 4)
+       
+       

@@ -18,13 +18,16 @@ columns_830 <- c("Ward",
                  "nRN",
                  "Safe")
 
-covid830_flow <- read_excel("COVIDSitRep01.xlsm", sheet = 3, range = "B19:J41", col_names = F)
+covid830_flow <- read_excel("COVIDSitRep01.xlsm", sheet = 3, range = "B19:J42", col_names = F)
 
 colnames(covid830_flow) <- columns_830
 
+covid830_flow[8, 1] <- "22 Red"
+covid830_flow[12, 1] <- "34 Red"
+
 covid830_flow$Empty <- as.numeric(covid830_flow$Empty)
 
-redzones_830 <- c("AU1", "22", "34", "41", "43", "51", "53")
+redzones_830 <- c("AU1", "22 Red", "34 Red", "41", "43", "51", "53")
 
 covid830_flow <- covid830_flow %>%
   mutate("RedZone" = ifelse(Ward %in% redzones_830, T, F))
@@ -35,6 +38,8 @@ covid830_ortho <- read_excel("COVIDSitRep01.xlsm", sheet = 3, range = "E45", col
 covid830_wac <- read_excel("COVIDSitRep01.xlsm", sheet = 3, range = "B52:J62", col_names = F)
 
 colnames(covid830_wac) <- columns_830
+
+covid830_wac$Empty <- as.numeric(covid830_wac$Empty)
 
 covid830_wac[, 1] <- c("Delivery Suite Red",
                        "Observation Unit Red",
