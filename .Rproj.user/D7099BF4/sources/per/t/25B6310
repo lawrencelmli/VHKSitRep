@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588923828798.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2430595744",
+    "id" : "25B6310",
+    "lastKnownWriteTime" : 1587764079,
+    "last_content_update" : 1587764079,
+    "path" : "~/R_Projects/VHKSitRep/data_other_scripts/dataExtract.R",
+    "project_path" : "data_other_scripts/dataExtract.R",
+    "properties" : {
+        "cursorPosition" : "39,35",
+        "scrollLine" : "20"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

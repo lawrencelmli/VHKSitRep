@@ -74,7 +74,14 @@ ui <- dashboardPage(
       tabItem(tabName = "night_report", h3("Night Capacity Report"),
               fluidRow(
                 box(title = "EMERGENCY DEPARTMENT", width = 12, collapsible = T,
-                    htmlOutput("ed_summary"))
+                    infoBoxOutput("nc_ed.1", width = 3),
+                    infoBoxOutput("nc_ed.2", width = 3),
+                    infoBoxOutput("nc_ed.3", width = 3),
+                    infoBoxOutput("nc_ed.4", width = 3),
+                    infoBoxOutput("nc_ed.5", width = 3),
+                    infoBoxOutput("nc_ed.6", width = 3),
+                    infoBoxOutput("nc_ed.7", width = 3),
+                    infoBoxOutput("nc_ed.8", width = 3))
                 ), #/fluidRow
               fluidRow(
                 box(title = "MEDICINE", width = 12, collapsible = T, 
@@ -112,8 +119,29 @@ ui <- dashboardPage(
                              )
                            )
                     ),
-                box(title = "SURGERY", width = 12, collapsible = T)
-                )
+                box(title = "SURGERY", width = 12, collapsible = T,
+                    column(width = 3,
+                           infoBoxOutput("sx_compliment", width = NULL),
+                           infoBoxOutput("sx_empty", width = NULL),
+                           infoBoxOutput("sx_total_px", width = NULL),
+                           infoBoxOutput("sx_5d", width = NULL),
+                           infoBoxOutput("sx_boarders", width = NULL)
+                           ),
+                    column(width = 9, 
+                           fluidRow(
+                             valueBoxOutput("au2_night", width = 2),
+                             valueBoxOutput("ent_night", width = 2),
+                             valueBoxOutput("w10_night", width = 2),
+                             valueBoxOutput("w9sx_night", width = 2)
+                             ),
+                           fluidRow(
+                             valueBoxOutput("w52_night", width = 2),
+                             valueBoxOutput("w53_night", width = 2),
+                             valueBoxOutput("w54sx_night", width = 2)
+                             )
+                           )
+                      )
+                    ) #/FluidRow
               ), #/tabItem "night_report"
       tabItem(tabName = "safety", h3("Safety Huddle")), #/tabItem "safety"
       tabItem(tabName = "eight_thirty", h3("Situation Report at 8:30")), #/tabItem "eight_thirty"
@@ -481,7 +509,7 @@ ui <- dashboardPage(
               ), #/tabItem "one_pm COVID-19"
       tabItem(tabName = "covid_five_pm", h3("Situation Report at 17:00 COVID-19"),
               fluidRow(
-                box(title = "13:00 At a Glance", width = 12, collapsible = T,
+                box(title = "17:00 At a Glance", width = 12, collapsible = T,
                     column(width = 6,
                            fluidRow(
                              infoBoxOutput("c17_glance1", width = 6),
@@ -571,7 +599,7 @@ ui <- dashboardPage(
               ), #/tabItem "five_pm" COVID-19
       tabItem(tabName = "covid_seven_pm", h3("Situation Report at 19:00 COVID-19"),
               fluidRow(
-                box(title = "13:00 At a Glance", width = 12, collapsible = T,
+                box(title = "19:00 At a Glance", width = 12, collapsible = T,
                     column(width = 6,
                            fluidRow(
                              infoBoxOutput("c19_glance1", width = 6),
@@ -763,27 +791,89 @@ server <- function(input, output){
     return(ed)
   })
   
-  output$ed_summary <- renderText({
-    ed_kable <- ED_summary() %>%
-      rename("Total Number in ED" = Total,
-             "Longest Wait" = Longest,
-             "Longest Time to First Assessment" = Time_to_Assess,
-             "Number of Patients more than 3 Hours" = Three_hours,
-             "Number of Patients with DTA" = DTA,
-             "Number of Patients Breached since Midnight" = Breaches,
-             "Number in EMOU (6)" = EMOU,
-             "Attendences since Midnight" = Attendence)
+   output$nc_ed.1 <- renderInfoBox({
+     infoBox(title = "Total No. in ED", value = ED_summary()[1,1], color = "navy", icon = icon("clipboard"))
+   })
+   
+   output$nc_ed.2 <- renderInfoBox({
+     infoBox(title = "Longest Wait", value = ED_summary()[1,2], color = "yellow", icon = icon("clock"))
+   })
+   
+   output$nc_ed.3 <- renderInfoBox({
+     infoBox(title = "Longest Time to Assessment", value = ED_summary()[1,3], color = "yellow", icon = icon("stopwatch"))
+   })
+   
+   output$nc_ed.4 <- renderInfoBox({
+     
+     colour <- function(x){
+       if(x > 0){
+         colour <- "red"
+       }else{
+         colour <- "green"
+       }
+       return(colour)
+     }
+     
+     infoBox(title = "Patients more than 3 hours", value = ED_summary()[1,4], color = colour(ED_summary()[1,4]), icon = icon("exclamation-triangle"))
+   })
+   
+   output$nc_ed.5 <- renderInfoBox({
+     
+     colour <- function(x){
+       if(x > 0){
+         colour <- "purple"
+       }else{
+         colour <- "green"
+       }
+       return(colour)
+     }
+     
+     infoBox(title = "No. with DTA", value = ED_summary()[1,5], color = colour(ED_summary()[1,5]), icon = icon("hospital"))
+   })
+   
+   output$nc_ed.6 <- renderInfoBox({
+     
+     colour <- function(x){
+       if(x > 0){
+         colour <- "purple"
+       }else{
+         colour <- "green"
+       }
+       return(colour)
+     }
+     
+     infoBox(title = "No. of breaches since MN", value = ED_summary()[1,6], color = colour(ED_summary()[1,6]), icon = icon("stopwatch"))
+   })
+   
+   output$nc_ed.7 <- renderInfoBox({
+     infoBox(title = "No. of patients in EMOU", value = paste0(ED_summary()[1,7], "/6 Beds"), color = "navy", icon = icon("procedures"))
+   })
+   
+   output$nc_ed.8 <- renderInfoBox({
+     infoBox(title = "Attendances since Midnight", value = ED_summary()[1,8], color = "navy", icon = icon("ambulance"))
+   })
+   
+   
+   
+  
+  colour_empty_night <- reactive({
+    if(night_medicine()[[15, 3]] >= 20){
+      colour <- "green"
+    }else if(night_medicine()[[15, 3]] >= 10 & night_medicine()[[15, 3]] < 20){
+      colour <- "yellow"
+    }else if(night_medicine()[[15, 3]] < 10){
+      colour <- "red"
+    }
     
-    kable(ed_kable, "html", booktabs = T) %>%
-      kable_styling(full_width = F, position = "center") %>% 
-      row_spec(0, bold = T, font_size = 15, align = "center", background = "#4d749a", color = "white") %>%
-      row_spec(1, bold = T, font_size = 20, align = "center") %>%
-      column_spec(c(1:3, 7:8), color = "red") %>%
-      column_spec(4, color = "white", background = "#ea3e50") %>%
-      column_spec(c(5, 6), color = "white", background = "#a380b6") %>%
-      column_spec(c(1:8), border_left = "5px solid white", border_right = "5px solid white", width = "12em")
+    return(colour)
   })
   
+  colour_empty_ward <- function(x) {
+    cut(as.numeric(x), breaks=c(-Inf, 1, 3, Inf), labels=c("red","yellow","green"), right = FALSE)
+  }
+
+# Normal Night Capacity_Medicine ------------------------------------------
+
   night_medicine <- reactive({
     
     req(input$file1)
@@ -808,21 +898,6 @@ server <- function(input, output){
     )
   })
   
-  colour_empty_night <- reactive({
-    if(night_medicine()[[15, 3]] >= 30){
-      colour <- "green"
-    }else if(night_medicine()[[15, 3]] >= 15 & night_medicine()[[15, 3]] < 30){
-      colour <- "yellow"
-    }else if(night_medicine()[[15, 3]] < 15){
-      colour <- "red"
-    }
-    
-    return(colour)
-  })
-  
-  colour_empty_ward <- function(x) {
-    cut(as.numeric(x), breaks=c(-Inf, 5, 10, Inf), labels=c("red","yellow","green"), right = FALSE)
-  }
   
   output$med_empty <- renderInfoBox({
     infoBox(
@@ -833,7 +908,7 @@ server <- function(input, output){
   
   output$med_total_px <- renderInfoBox({
     infoBox(
-      "Total Patients", night_patients()[[1, 2]], icon = icon("procedures"),
+      "Total Patients", night_patients()[[1, 2]], icon = icon("hospital-user"),
       color = "purple"
     )
   })
@@ -942,6 +1017,126 @@ server <- function(input, output){
     valueBox(
       tags$h3("Ward 54", style = "font-size: 150%;"), paste0(night_medicine()[[14,3]], "/", night_medicine()[[14,2]], "Available"), icon = icon("bed"),
       color = colour_empty_ward(night_medicine()[[14,3]])
+    )
+  })
+  
+
+# Normal Night Capacity_Surgery -------------------------------------------
+  
+  colour_empty_sx <- reactive({
+    if(night_surgery()[[8, 3]] >= 20){
+      colour <- "green"
+    }else if(night_surgery()[[8, 3]] >= 10 & night_surgery()[[8, 3]] < 20){
+      colour <- "yellow"
+    }else if(night_surgery()[[8, 3]] < 10){
+      colour <- "red"
+    }
+    
+    return(colour)
+  })
+
+  night_surgery <- reactive({
+    req(input$file1)
+    
+    surgery <- read_excel(input$file1$datapath, sheet = 1, range = "A24:C30", col_names = F)
+    
+    colnames(surgery) <- c("Ward", "Compliment", "Empty")
+    
+    total_sx <- c("Total",
+                  colSums(surgery[, 2]),
+                  colSums(surgery[, 3]))
+    
+    surgery <- rbind(surgery, total_sx)
+    
+    return(surgery)
+  })
+  output$sx_compliment <- renderInfoBox({
+    infoBox(
+      "Bed Compliment", night_surgery()[[8, 2]], icon = icon("hospital"),
+      color = "purple"
+    )
+  })
+  output$sx_empty <- renderInfoBox({
+    infoBox(
+      "Empty Beds", night_surgery()[[8, 3]], icon = icon("bed"),
+      color = colour_empty_sx()
+    )
+  })
+  
+  output$sx_total_px <- renderInfoBox({
+    infoBox(
+      "Total Patients", night_patients()[[2, 2]], icon = icon("hospital-user"),
+      color = "purple"
+    )
+  })
+  
+  output$sx_5d <- renderInfoBox({
+    infoBox(
+      "No. more than 5 Days", night_patients()[[2, 3]], icon = icon("stopwatch"),
+      color = "red"
+    )
+  })
+  
+  output$sx_boarders <- renderInfoBox({
+    infoBox(
+      "No. Boarded Yesterday", night_patients()[[2, 4]], icon = icon("passport"),
+      color = "red"
+    )
+  })
+  
+  output$au2_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("AU 2", style = "font-size: 150%;"), paste0(night_surgery()[[1,3]], "/", night_surgery()[[1,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[1,3]])
+    )
+  })
+  
+  output$ent_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("ENT", style = "font-size: 150%;"), paste0(night_surgery()[[2,3]], "/", night_surgery()[[2,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[2,3]])
+    )
+  })
+  
+  output$w10_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("Ward 10", style = "font-size: 150%;"), paste0(night_surgery()[[3,3]], "/", night_surgery()[[3,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[3,3]])
+    )
+  })
+  
+  output$w9sx_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("Ward 9", style = "font-size: 150%;"), paste0(night_surgery()[[4,3]], "/", night_surgery()[[4,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[4,3]])
+    )
+  })
+  
+  output$w52_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("Ward 52", style = "font-size: 150%;"), paste0(night_surgery()[[5,3]], "/", night_surgery()[[5,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[5,3]])
+    )
+  })
+  
+  output$w53_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("Ward 53", style = "font-size: 150%;"), paste0(night_surgery()[[6,3]], "/", night_surgery()[[6,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[6,3]])
+    )
+  })
+  
+  output$w54sx_night <- renderValueBox({
+    
+    valueBox(
+      tags$h3("Ward 54", style = "font-size: 150%;"), paste0(night_surgery()[[7,3]], "/", night_surgery()[[7,2]], " Available"), icon = icon("bed"),
+      color = colour_empty_ward(night_surgery()[[7,3]])
     )
   })
   
@@ -1794,6 +1989,8 @@ server <- function(input, output){
   })
   
   c830_flow <- reactive({
+    req(input$file2)
+    
     columns_830 <- c("Ward", 
                      "Compliment",
                      "Empty",
@@ -1804,7 +2001,7 @@ server <- function(input, output){
                      "nRN",
                      "Safe")
     
-    covid830_flow <- read_excel("COVIDSitRep01.xlsm", sheet = 3, range = "B19:J42", col_names = F)
+    covid830_flow <- read_excel(input$file2$datapath, sheet = 3, range = "B19:J42", col_names = F)
     
     colnames(covid830_flow) <- columns_830
     
