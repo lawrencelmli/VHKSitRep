@@ -116,6 +116,74 @@ colnames(calls) <- c("Time", "Nature")
 calls$Time <- format(calls$Time, "%T")
 
 
+# Safety Huddle -----------------------------------------------------------
+
+
+# Site Position -----------------------------------------------------------
+
+adult_occ1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "E2", col_names = F)
+
+adult_occ2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "G2", col_names = F)
+
+adult_occ3 <- adult_occ1/adult_occ2
+
+add_occ1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "E3", col_names = F)
+
+add_occ2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "G3", col_names = F)
+
+add_occ3 <- add_occ1/add_occ2
+
+ED_present <- read_excel("SitRep01.xlsm", sheet = 2, range = "E6", col_names = F)
+
+ED_breach <- read_excel("SitRep01.xlsm", sheet = 2, range = "E7", col_names = F)
+
+ED_perform <- (ED_present - ED_breach)/ED_present
+
+EC_admit1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "E8", col_names = F)
+
+EC_admit2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "G8", col_names = F)
+
+EC_discharge1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "L8", col_names = F)
+
+EC_discharge2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "M8", col_names = F)
+
+EC_discharge3 <- read_excel("SitRep01.xlsm", sheet = 2, range = "O8", col_names = F)
+
+PC_admit1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "E9", col_names = F)
+
+PC_admit2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "G9", col_names = F)
+
+PC_discharge1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "L9", col_names = F)
+
+PC_discharge2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "M9", col_names = F)
+
+PC_discharge3 <- read_excel("SitRep01.xlsm", sheet = 2, range = "O9", col_names = F)
+
+total_patients <- read_excel("SitRep01.xlsm", sheet = 2, range = "M10", col_names = F)
+
+AA_present <- read_excel("SitRep01.xlsm", sheet = 2, range = "E12", col_names = F)
+
+AA_discharge <- read_excel("SitRep01.xlsm", sheet = 2, range = "M12", col_names = F)
+
+AU1_tansfer1 <- read_excel("SitRep01.xlsm", sheet = 2, range = "F14", col_names = F)
+
+AU1_tansfer2 <- read_excel("SitRep01.xlsm", sheet = 2, range = "J14", col_names = F)
+
+AU1_tansfer3 <- read_excel("SitRep01.xlsm", sheet = 2, range = "N14", col_names = F)
+
+HAN_table <- read_excel("SitRep01.xlsm", sheet = 2, range = "A17:F22", col_names = F)
+
+HAN_table <- HAN_table %>%
+  select(-c(2:5))
+
+colnames(HAN_table) <- c("event", "numbers")
+
+
+
+
+
+
+
 
 
 

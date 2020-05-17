@@ -1,6 +1,19 @@
-infoBoxOutput("nrc_predicted", width = 4),
-                    infoBoxOutput("nrc_total", width = 2),
-                    infoBoxOutput("nrc_admissions", width = 3),
-                    infoBoxOutput("nrc_remain", width = 3),
-                    infoBoxOutput("nrc_beds", width = 2),
-                    infoBoxOutput("nrc_dc_expected", width = 3)
+fluidRow(
+                      infoBoxOutput("bed_occ", width = 3),
+                      valueBoxOutput("occ_percent", width = 3)
+                      ),
+                    fluidRow(
+                      infoBoxOutput("add_occ", width = 3),
+                      valueBoxOutput("add_percent", width = 3))
+                    ), #/box - SITE POSITION
+                box(title = "HOSPITAL @ NIGHT", collapsible = T, width = 6,
+                    infoBoxOutput("han1", width = 3),
+                    infoBoxOutput("han2", width = 3),
+                    infoBoxOutput("han3", width = 3),
+                    infoBoxOutput("han4", width = 3),
+                    infoBoxOutput("han5", width = 3),
+                    infoBoxOutput("han6", width = 3)
+	
+	infoBoxOutput("sh_ed1", width = 3),
+                      infoBoxOutput("sh_ed2", width = 3),
+                      valueBoxOutput("sh_ed3", width = 3)
