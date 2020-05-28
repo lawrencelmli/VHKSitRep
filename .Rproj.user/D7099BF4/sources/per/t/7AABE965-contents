@@ -43,9 +43,9 @@ ui <- dashboardPage(
       menuItem("19:00", tabName = "seven_pm", icon = icon("clock")),
       
       menuItem("CoViD-19", icon = icon("virus"), startExpanded = T,
-               
-               menuSubItem("Night Capacity Report", tabName = "covid_night", icon = icon("clipboard")),
                menuSubItem("Safety Huddle", tabName = "covid_safety", icon = icon("hard-hat")),
+               menuSubItem("Night Capacity Report", tabName = "covid_night", icon = icon("clipboard")),
+               menuSubItem("SG Report @ 10:00", tabName = "covid_SG", icon = icon("landmark")),
                menuSubItem("08:30", tabName = "covid_eight_thirty", icon = icon("clock")),
                menuSubItem("13:00", tabName = "covid_one_pm", icon = icon("clock")),
                menuSubItem("17:00", tabName = "covid_five_pm", icon = icon("clock")),
@@ -744,6 +744,8 @@ ui <- dashboardPage(
                 
               
               ), #/tabItem "safety COVID-19"
+      
+      tabItem(tabName = "covid_SG", h3("Scottish Government Reporting - FOR CONTROL ROOM USE")),
       
       tabItem(tabName = "covid_eight_thirty", h3("Situation Report at 08:30 COVID-19"),
               
