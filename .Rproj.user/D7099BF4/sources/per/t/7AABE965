@@ -1,0 +1,25 @@
+{
+    "id": "7AABE965",
+    "path": "~/R_Projects/VHKSitRep/app.R",
+    "project_path": "app.R",
+    "type": "r_source",
+    "hash": "1021327696",
+    "contents": "",
+    "dirty": false,
+    "created": 1590261453670.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "588,44",
+        "scrollLine": "579",
+        "tempName": "Untitled1"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1590606856,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1590606856988,
+    "read_only": false,
+    "read_only_alternatives": []
+}

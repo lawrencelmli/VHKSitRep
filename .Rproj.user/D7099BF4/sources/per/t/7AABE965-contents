@@ -237,10 +237,351 @@ ui <- dashboardPage(
                     ) #/box "Capacity"
                 )
               ), #/tabItem "safety"
-      tabItem(tabName = "eight_thirty", h3("Situation Report at 8:30")), #/tabItem "eight_thirty"
-      tabItem(tabName = "one_pm", h3("Situation Report at 13:00")), #/tabItem "one_pm"
-      tabItem(tabName = "five_pm", h3("Situation Report at 17:00")), #/tabItem "five_pm"
-      tabItem(tabName = "seven_pm", h3("Situation Report at 19:00")), #/tabItem "seven_pm"
+      tabItem(tabName = "eight_thirty", h3("Situation Report at 8:30"),
+              fluidRow(
+                box(title = "OVERVIEW", width = 12, collapsible = T,
+                    column(width = 4,
+                           box(title = "Emergency Care", width = 12, collapsible = T,
+                               infoBoxOutput("ec830_1", width = 12),
+                               infoBoxOutput("ec830_2", width = 12),
+                               infoBoxOutput("ec830_3", width = 12),
+                               infoBoxOutput("ec830_4", width = 12),
+                               infoBoxOutput("ec830_5", width = 12),
+                               infoBoxOutput("ec830_6", width = 12),
+                               infoBoxOutput("ec830_7", width = 12),
+                               infoBoxOutput("ec830_8", width = 12)
+                               )
+                           ), #/column
+                    column(width = 4,
+                           box(title = "Planned Care", width = 12, collapsible = T,
+                               infoBoxOutput("pc830_1", width = 12),
+                               infoBoxOutput("pc830_2", width = 12),
+                               infoBoxOutput("pc830_3", width = 12),
+                               infoBoxOutput("pc830_4", width = 12),
+                               infoBoxOutput("pc830_5", width = 12),
+                               infoBoxOutput("pc830_6", width = 12),
+                               infoBoxOutput("pc830_7", width = 12),
+                               infoBoxOutput("pc830_8", width = 12)
+                               )
+                          ), #/column
+                    column(width = 4,
+                           box(title = "Totals", width = 12, collapsible = T,
+                               infoBoxOutput("tot830_1", width = 12),
+                               infoBoxOutput("tot830_2", width = 12),
+                               infoBoxOutput("tot830_3", width = 12),
+                               infoBoxOutput("tot830_4", width = 12),
+                               infoBoxOutput("tot830_5", width = 12),
+                               infoBoxOutput("tot830_6", width = 12),
+                               infoBoxOutput("tot830_7", width = 12),
+                               infoBoxOutput("tot830_8", width = 12)
+                               )
+                           )
+                  ) #/ box - Summary
+                ), #/fluidRow
+              fluidRow(
+                box(title = "EMERGENCY DEPARTMENT", width = 12, collapsible = T,
+                    infoBoxOutput("ed830_1", width = 4),
+                    infoBoxOutput("ed830_2", width = 4),
+                    infoBoxOutput("ed830_3", width = 4),
+                    infoBoxOutput("ed830_4", width = 4),
+                    infoBoxOutput("ed830_5", width = 4),
+                    infoBoxOutput("ed830_6", width = 4),
+                    infoBoxOutput("ed830_7", width = 4),
+                    infoBoxOutput("ed830_8", width = 4),
+                    valueBoxOutput("ed830_9", width = 2)
+                    ),
+                
+                box(title = "ASSESSMENT UNITS", width = 12, collapsible = T,
+                    box(title = "AU One", width = 6, collapsible = T,
+                        infoBoxOutput("au1_830_1", width = 6),
+                        infoBoxOutput("au1_830_2", width = 6),
+                        infoBoxOutput("au1_830_3", width = 6),
+                        infoBoxOutput("au1_830_4", width = 6)
+                        ),
+                    box(title = "AU Two", width = 6, collapsible = T,
+                        infoBoxOutput("au2_830_1", width = 6),
+                        infoBoxOutput("au2_830_2", width = 6),
+                        infoBoxOutput("au2_830_3", width = 6),
+                        infoBoxOutput("au2_830_4", width = 6)
+                        )
+                    ),
+                
+                box(title = "CRITICAL CARE", width = 8, collapsible = T,
+                    htmlOutput("cc830")
+                    ),
+                box(title = "Trauma List", width = 4, collapsible = T,
+                    infoBoxOutput("trauma_830", width = 12)
+                    )
+                ),
+              fluidRow(
+                box(title = "FLOW", width = 12, collapsible = T,
+                    box(title = "Medicine", width = 12, collapsible = T,
+                        htmlOutput("med830")),
+                    box(title = "Surgery and Trauma", width = 12, collapsible = T,
+                        htmlOutput("sx830"),
+                        htmlOutput("ot830")),
+                    box(title = "Women & Children", width = 7, collapsible = T,
+                        htmlOutput("wac830")),
+                    box(title = "Additional Capacity", width = 5, collapsible = T,
+                        htmlOutput("add830"))
+                    )
+                )
+              
+              ), #/tabItem "eight_thirty"
+      tabItem(tabName = "one_pm", h3("Situation Report at 13:00"),
+              fluidRow(
+                box(title = "OVERVIEW", width = 12, collapsible = T,
+                    column(width = 4,
+                           box(title = "Emergency Care", width = 12, collapsible = T,
+                               infoBoxOutput("ec1300_1", width = 12),
+                               infoBoxOutput("ec1300_2", width = 12),
+                               infoBoxOutput("ec1300_3", width = 12),
+                               infoBoxOutput("ec1300_4", width = 12),
+                               infoBoxOutput("ec1300_5", width = 12),
+                               infoBoxOutput("ec1300_6", width = 12),
+                               infoBoxOutput("ec1300_7", width = 12),
+                               infoBoxOutput("ec1300_8", width = 12)
+                           )
+                    ), #/column
+                    column(width = 4,
+                           box(title = "Planned Care", width = 12, collapsible = T,
+                               infoBoxOutput("pc1300_1", width = 12),
+                               infoBoxOutput("pc1300_2", width = 12),
+                               infoBoxOutput("pc1300_3", width = 12),
+                               infoBoxOutput("pc1300_4", width = 12),
+                               infoBoxOutput("pc1300_5", width = 12),
+                               infoBoxOutput("pc1300_6", width = 12),
+                               infoBoxOutput("pc1300_7", width = 12),
+                               infoBoxOutput("pc1300_8", width = 12)
+                           )
+                    ), #/column
+                    column(width = 4,
+                           box(title = "Totals", width = 12, collapsible = T,
+                               infoBoxOutput("tot1300_1", width = 12),
+                               infoBoxOutput("tot1300_2", width = 12),
+                               infoBoxOutput("tot1300_3", width = 12),
+                               infoBoxOutput("tot1300_4", width = 12),
+                               infoBoxOutput("tot1300_5", width = 12),
+                               infoBoxOutput("tot1300_6", width = 12),
+                               infoBoxOutput("tot1300_7", width = 12),
+                               infoBoxOutput("tot1300_8", width = 12)
+                           )
+                    )
+                ) #/ box - Summary
+              ), #/fluidRow
+              fluidRow(
+                box(title = "EMERGENCY DEPARTMENT", width = 12, collapsible = T,
+                    infoBoxOutput("ed1300_1", width = 4),
+                    infoBoxOutput("ed1300_2", width = 4),
+                    infoBoxOutput("ed1300_3", width = 4),
+                    infoBoxOutput("ed1300_4", width = 4),
+                    infoBoxOutput("ed1300_5", width = 4),
+                    infoBoxOutput("ed1300_6", width = 4),
+                    infoBoxOutput("ed1300_7", width = 4)
+                ),
+                
+                box(title = "ASSESSMENT UNITS", width = 12, collapsible = T,
+                    box(title = "AU One", width = 6, collapsible = T,
+                        infoBoxOutput("au1_1300_1", width = 6),
+                        infoBoxOutput("au1_1300_2", width = 6),
+                        infoBoxOutput("au1_1300_3", width = 6),
+                        infoBoxOutput("au1_1300_4", width = 6)
+                    ),
+                    box(title = "AU Two", width = 6, collapsible = T,
+                        infoBoxOutput("au2_1300_1", width = 6),
+                        infoBoxOutput("au2_1300_2", width = 6),
+                        infoBoxOutput("au2_1300_3", width = 6),
+                        infoBoxOutput("au2_1300_4", width = 6)
+                    )
+                ),
+                
+                box(title = "CRITICAL CARE", width = 8, collapsible = T,
+                    htmlOutput("cc1300")
+                )
+              ),
+              fluidRow(
+                box(title = "FLOW", width = 12, collapsible = T,
+                    box(title = "Medicine", width = 12, collapsible = T,
+                        htmlOutput("med1300")),
+                    box(title = "Surgery and Trauma", width = 12, collapsible = T,
+                        htmlOutput("sx1300"),
+                        htmlOutput("ot1300")),
+                    box(title = "Additional Capacity", width = 5, collapsible = T,
+                        htmlOutput("add1300"))
+                )
+              )
+              
+              
+              ), #/tabItem "one_pm"
+      tabItem(tabName = "five_pm", h3("Situation Report at 17:00"),
+              fluidRow(
+                box(title = "OVERVIEW", width = 12, collapsible = T,
+                    column(width = 4,
+                           box(title = "Emergency Care", width = 12, collapsible = T,
+                               infoBoxOutput("ec1700_1", width = 12),
+                               infoBoxOutput("ec1700_2", width = 12),
+                               infoBoxOutput("ec1700_3", width = 12),
+                               infoBoxOutput("ec1700_4", width = 12),
+                               infoBoxOutput("ec1700_5", width = 12),
+                               infoBoxOutput("ec1700_6", width = 12),
+                               infoBoxOutput("ec1700_7", width = 12),
+                               infoBoxOutput("ec1700_8", width = 12)
+                           )
+                    ), #/column
+                    column(width = 4,
+                           box(title = "Planned Care", width = 12, collapsible = T,
+                               infoBoxOutput("pc1700_1", width = 12),
+                               infoBoxOutput("pc1700_2", width = 12),
+                               infoBoxOutput("pc1700_3", width = 12),
+                               infoBoxOutput("pc1700_4", width = 12),
+                               infoBoxOutput("pc1700_5", width = 12),
+                               infoBoxOutput("pc1700_6", width = 12),
+                               infoBoxOutput("pc1700_7", width = 12),
+                               infoBoxOutput("pc1700_8", width = 12)
+                           )
+                    ), #/column
+                    column(width = 4,
+                           box(title = "Totals", width = 12, collapsible = T,
+                               infoBoxOutput("tot1700_1", width = 12),
+                               infoBoxOutput("tot1700_2", width = 12),
+                               infoBoxOutput("tot1700_3", width = 12),
+                               infoBoxOutput("tot1700_4", width = 12),
+                               infoBoxOutput("tot1700_5", width = 12),
+                               infoBoxOutput("tot1700_6", width = 12),
+                               infoBoxOutput("tot1700_7", width = 12),
+                               infoBoxOutput("tot1700_8", width = 12)
+                           )
+                    )
+                ) #/ box - Summary
+              ), #/fluidRow
+              fluidRow(
+                box(title = "EMERGENCY DEPARTMENT", width = 12, collapsible = T,
+                    infoBoxOutput("ed1700_1", width = 4),
+                    infoBoxOutput("ed1700_2", width = 4),
+                    infoBoxOutput("ed1700_3", width = 4),
+                    infoBoxOutput("ed1700_4", width = 4),
+                    infoBoxOutput("ed1700_5", width = 4),
+                    infoBoxOutput("ed1700_6", width = 4),
+                    infoBoxOutput("ed1700_7", width = 4)
+                ),
+                
+                box(title = "ASSESSMENT UNITS", width = 12, collapsible = T,
+                    box(title = "AU One", width = 6, collapsible = T,
+                        infoBoxOutput("au1_1700_1", width = 6),
+                        infoBoxOutput("au1_1700_2", width = 6),
+                        infoBoxOutput("au1_1700_3", width = 6),
+                        infoBoxOutput("au1_1700_4", width = 6)
+                    ),
+                    box(title = "AU Two", width = 6, collapsible = T,
+                        infoBoxOutput("au2_1700_1", width = 6),
+                        infoBoxOutput("au2_1700_2", width = 6),
+                        infoBoxOutput("au2_1700_3", width = 6),
+                        infoBoxOutput("au2_1700_4", width = 6)
+                    )
+                ),
+                
+                box(title = "CRITICAL CARE", width = 8, collapsible = T,
+                    htmlOutput("cc1700")
+                )
+              ),
+              fluidRow(
+                box(title = "FLOW", width = 12, collapsible = T,
+                    box(title = "Medicine", width = 12, collapsible = T,
+                        htmlOutput("med1700")),
+                    box(title = "Surgery and Trauma", width = 12, collapsible = T,
+                        htmlOutput("sx1700"),
+                        htmlOutput("ot1700")),
+                    box(title = "Additional Capacity", width = 5, collapsible = T,
+                        htmlOutput("add1700"))
+                )
+              )
+      ), #/tabItem "five_pm"
+      tabItem(tabName = "seven_pm", h3("Situation Report at 19:00"),
+              fluidRow(
+                box(title = "OVERVIEW", width = 12, collapsible = T,
+                    column(width = 4,
+                           box(title = "Emergency Care", width = 12, collapsible = T,
+                               infoBoxOutput("ec1900_1", width = 12),
+                               infoBoxOutput("ec1900_2", width = 12),
+                               infoBoxOutput("ec1900_3", width = 12),
+                               infoBoxOutput("ec1900_4", width = 12),
+                               infoBoxOutput("ec1900_5", width = 12),
+                               infoBoxOutput("ec1900_6", width = 12),
+                               infoBoxOutput("ec1900_7", width = 12),
+                               infoBoxOutput("ec1900_8", width = 12)
+                           )
+                    ), #/column
+                    column(width = 4,
+                           box(title = "Planned Care", width = 12, collapsible = T,
+                               infoBoxOutput("pc1900_1", width = 12),
+                               infoBoxOutput("pc1900_2", width = 12),
+                               infoBoxOutput("pc1900_3", width = 12),
+                               infoBoxOutput("pc1900_4", width = 12),
+                               infoBoxOutput("pc1900_5", width = 12),
+                               infoBoxOutput("pc1900_6", width = 12),
+                               infoBoxOutput("pc1900_7", width = 12),
+                               infoBoxOutput("pc1900_8", width = 12)
+                           )
+                    ), #/column
+                    column(width = 4,
+                           box(title = "Totals", width = 12, collapsible = T,
+                               infoBoxOutput("tot1900_1", width = 12),
+                               infoBoxOutput("tot1900_2", width = 12),
+                               infoBoxOutput("tot1900_3", width = 12),
+                               infoBoxOutput("tot1900_4", width = 12),
+                               infoBoxOutput("tot1900_5", width = 12),
+                               infoBoxOutput("tot1900_6", width = 12),
+                               infoBoxOutput("tot1900_7", width = 12),
+                               infoBoxOutput("tot1900_8", width = 12)
+                           )
+                    )
+                ) #/ box - Summary
+              ), #/fluidRow
+              fluidRow(
+                box(title = "EMERGENCY DEPARTMENT", width = 12, collapsible = T,
+                    infoBoxOutput("ed1900_1", width = 4),
+                    infoBoxOutput("ed1900_2", width = 4),
+                    infoBoxOutput("ed1900_3", width = 4),
+                    infoBoxOutput("ed1900_4", width = 4),
+                    infoBoxOutput("ed1900_5", width = 4),
+                    infoBoxOutput("ed1900_6", width = 4),
+                    infoBoxOutput("ed1900_7", width = 4)
+                ),
+                
+                box(title = "ASSESSMENT UNITS", width = 12, collapsible = T,
+                    box(title = "AU One", width = 6, collapsible = T,
+                        infoBoxOutput("au1_1900_1", width = 6),
+                        infoBoxOutput("au1_1900_2", width = 6),
+                        infoBoxOutput("au1_1900_3", width = 6),
+                        infoBoxOutput("au1_1900_4", width = 6)
+                    ),
+                    box(title = "AU Two", width = 6, collapsible = T,
+                        infoBoxOutput("au2_1900_1", width = 6),
+                        infoBoxOutput("au2_1900_2", width = 6),
+                        infoBoxOutput("au2_1900_3", width = 6),
+                        infoBoxOutput("au2_1900_4", width = 6)
+                    )
+                ),
+                
+                box(title = "CRITICAL CARE", width = 8, collapsible = T,
+                    htmlOutput("cc1900")
+                )
+              ),
+              fluidRow(
+                box(title = "FLOW", width = 12, collapsible = T,
+                    box(title = "Medicine", width = 12, collapsible = T,
+                        htmlOutput("med1900")),
+                    box(title = "Surgery and Trauma", width = 12, collapsible = T,
+                        htmlOutput("sx1900"),
+                        htmlOutput("ot1900")),
+                    box(title = "Additional Capacity", width = 5, collapsible = T,
+                        htmlOutput("add1900"))
+                )
+              )
+              
+      
+              
+              ), #/tabItem "seven_pm"
       
       tabItem(tabName = "covid_night", h3("Night Capacity Report COVID-19"),
               
@@ -815,7 +1156,7 @@ server <- function(input, output){
   }
   
   colour_safe <- function(x){
-    if(x == "Yes" | x == "Y" | x == "yes" | x == "y"){
+    if(x == "Yes" | x == "Y" | x == "yes" | x == "y" | x == "YES"){
       colour <- "green"
     }else{
       colour <- "red"
@@ -935,7 +1276,7 @@ server <- function(input, output){
        return(colour)
      }
      
-     infoBox(title = "No. of breaches since MN", value = ED_summary()[1,6], color = colour(ED_summary()[1,6]), icon = icon("stopwatch"))
+     infoBox(title = "Breaches since Midnight", value = ED_summary()[1,6], color = colour(ED_summary()[1,6]), icon = icon("stopwatch"))
    })
    
    output$nc_ed.7 <- renderInfoBox({
@@ -1538,7 +1879,7 @@ server <- function(input, output){
   HAN <- reactive({
     req(input$file1)
     
-    HAN_table <- read_excel("SitRep01.xlsm", sheet = 2, range = "A17:F22", col_names = F)
+    HAN_table <- read_excel(input$file1$datapath, sheet = 2, range = "A17:F22", col_names = F)
     
     HAN_table <- HAN_table %>%
       select(-c(2:5))
@@ -1743,6 +2084,2345 @@ server <- function(input, output){
     infoBox("After 20:00", color = "red", value = AU1_tansfer3, icon = icon("clock"))
     
   })
+  
+  
+
+# Normal 8:30 -------------------------------------------------------------
+
+  ec_830 <- reactive({
+    req(input$file1)
+    
+    EC_830 <- read_excel(input$file1$datapath, sheet = 3, range = "A6:E13", col_names = F)
+    
+    EC_830$...1 <- gsub(":", "", EC_830$...1)
+    
+    EC_830 <- EC_830 %>%
+      select("FLow" = ...1,
+             "Numbers" = ...5)
+    
+    return(EC_830)
+  })  
+  
+  output$ec830_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = ec_830()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$ec830_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = ec_830()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$ec830_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = ec_830()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec830_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = ec_830()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$ec830_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = ec_830()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec830_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = ec_830()[[6,2]], color = ifelse(ec_830()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$ec830_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = ec_830()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$ec830_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = ec_830()[[8,2]], color = ifelse(ec_830()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  pc_830 <- reactive({
+    req(input$file1)
+    
+    PC_830 <- read_excel(input$file1$datapath, sheet = 3, range = "G6:J13", col_names = F)
+    
+    PC_830$...1 <- gsub(":", "", PC_830$...1)
+    
+    PC_830 <- PC_830 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...4)
+    
+    return(PC_830)
+    
+  })
+  
+  
+  output$pc830_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = pc_830()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$pc830_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = pc_830()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$pc830_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = pc_830()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc830_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = pc_830()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$pc830_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = pc_830()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc830_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = pc_830()[[6,2]], color = ifelse(pc_830()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$pc830_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = pc_830()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$pc830_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = pc_830()[[8,2]], color = ifelse(pc_830()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  tot_830 <- reactive({
+    
+    req(input$file1)
+    
+    total_830 <- read_excel(input$file1$datapath, sheet = 3, range = "M6:P13", col_names = F)
+    
+    total_830$...1 <- gsub(":", "", total_830$...1)
+    
+    total_830 <- total_830 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...4)
+    
+    return(total_830)
+    
+  })
+  
+  output$tot830_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = tot_830()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$tot830_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = tot_830()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$tot830_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = tot_830()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot830_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = tot_830()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$tot830_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = tot_830()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot830_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = tot_830()[[6,2]], color = ifelse(tot_830()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$tot830_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = tot_830()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$tot830_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = tot_830()[[8,2]], color = ifelse(tot_830()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  ED830 <- reactive({
+    req(input$file1)
+    ED_830 <- read_excel(input$file1$datapath, sheet = 3, range = "N18:V18", col_names = F)
+    
+    colnames(ED_830) <- c("Total",
+                          "Longest",
+                          "Assessment",
+                          "Three_hours",
+                          "DTA",
+                          "Breaches",
+                          "RN_Shrot",
+                          "nRN_Short",
+                          "Safe")
+    
+    if(is.character(ED_830$Longest) == T){
+      ED_830$Longest <- ED_830$Longest
+    }else{
+      ED_830$Longest <- format(ED_830$Longest, "%T")
+    }
+    
+    if(is.character(ED_830$Assessment) == T){
+      ED_830$Assessment <- ED_830$Assessment
+    }else{
+      ED_830$Assessment <- format(ED_830$Assessment, "%T")
+    }
+    
+    return(ED_830)
+  })
+  
+  output$ed830_1 <- renderInfoBox({
+    
+    infoBox("Total Number", value = ED830()[[1,1]],
+            color = "navy",
+            icon = icon("hospital-user"))
+    
+  })
+  
+  output$ed830_2 <- renderInfoBox({
+    
+    infoBox("Longest Wait", value = ED830()[[1,2]],
+            color = "yellow",
+            icon = icon("clock"))
+  })
+  
+  
+  output$ed830_3 <- renderInfoBox({
+    
+    infoBox("Time to Assessment", value = ED830()[[1,3]],
+            color = "yellow",
+            icon = icon("stopwatch"))
+  })
+  
+  
+  output$ed830_4 <- renderInfoBox({
+    
+    infoBox("Number with 3 hours wait", value = ED830()[[1,4]],
+            color = ifelse(ED830()[[1,4]] > 0, "red", "green"),
+            icon = icon("exclamation-triangle"))
+  })
+  
+  output$ed830_5 <- renderInfoBox({
+    
+    infoBox("Number of DTA", value = ED830()[[1,5]],
+            color = ifelse(ED830()[[1,5]] > 0, "purple", "green"),
+            icon = icon("hospital"))
+  })
+  
+  output$ed830_6 <- renderInfoBox({
+    
+    infoBox("Breaches since Midnight", value = ED830()[[1,6]],
+            color = ifelse(ED830()[[1,6]] > 0, "purple", "green"),
+            icon = icon("stopwatch"))
+  })
+  
+  output$ed830_7 <- renderInfoBox({
+    
+    infoBox("RN Shortfall", value = ED830()[[1,7]],
+            color = ifelse(ED830()[[1,7]] > 0, "red", "green"),
+            icon = icon("user-nurse"))
+  })
+  
+  output$ed830_8 <- renderInfoBox({
+    
+    infoBox("Night RN Shortfall", value = ED830()[[1,8]],
+            color = ifelse(ED830()[[1,8]] > 0, "red", "green"),
+            icon = icon("user-nurse"))
+  })
+  
+  output$ed830_9 <- renderValueBox({
+    
+    colour.ed <- function(x){
+      if(x == "Yes" | x == "y" | x == "Y" | x == "yes" | x == "YES"){
+        colour <- "green"
+      }else{
+        colour <- "red"
+      }
+      
+      return(colour)
+    }
+    
+    valueBox(value = ED830()[[1, 9]], subtitle = "Safe to Start", color = colour.ed(ED830()[[1, 9]]))
+  })
+  
+  au830 <- reactive({
+    req(input$file1)
+    
+    AU1_830 <- read_excel(input$file1$datapath, sheet = 3, range = "O44:S44", col_names = F)
+    AU2_830 <- read_excel(input$file1$datapath, sheet = 3, range = "O47:S47", col_names = F)
+    
+    AU_830 <- rbind(AU1_830, AU2_830)
+    
+    AU_830 <- AU_830 %>%
+      select(-...2) %>%
+      select("Now" = ...1,
+             "Beds" = ...3,
+             "DC" = ...4,
+             "Ongoing" =...5)
+    
+    return(AU_830)
+  })
+  
+  
+  output$au1_830_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "blue", value = au830()[[1,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au1_830_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "blue", value = au830()[[1,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au1_830_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "blue", value = au830()[[1,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au1_830_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "blue", value = au830()[[1,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$au2_830_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "light-blue", value = au830()[[2,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au2_830_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "light-blue", value = au830()[[2,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au2_830_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "light-blue", value = au830()[[2,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au2_830_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "light-blue", value = au830()[[2,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$cc830 <- renderText({
+    
+    req(input$file1)
+    
+    cc_830 <- read_excel(input$file1$datapath, sheet = 3, range = "N25:V29", col_names = F)
+    
+    colnames(cc_830) <- c("Ward",
+                          "Empty",
+                          "Fit",
+                          "Admissions",
+                          "Discharges",
+                          "End_Pos",
+                          "RN_Short",
+                          "nRN_Short",
+                          "Safe")
+    
+    cc_830[, 1] <- c("ITU",
+                     "SHDU",
+                     "MHDU",
+                     "RHDU",
+                     "CCU")
+    
+    cc_830 <- cc_830 %>%
+      mutate(
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos >= 0, "#56b34b", "#c64040", "#1b1c21")),
+        RN_Short = cell_spec(RN_Short, "html", bold = T, color = "white", background = if_else(RN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        nRN_Short = cell_spec(nRN_Short, "html", bold = T, color = "white", background = if_else(nRN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        Safe = cell_spec(Safe, "html", bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO") , "#c64040", "#56b34b", "#1b1c21"))
+        ) %>%
+      select(
+        "Ward" = Ward,
+        "Empty Beds Now" = Empty,
+        "Ward Fit Patients" = Fit,
+        "Planned Admissions" = Admissions,
+        "Discharges" = Discharges,
+        "End of Day Position" = End_Pos,
+        "RN Shortfall" = RN_Short,
+        "Night RN Shorfall" = nRN_Short,
+        "Safe to Start" = Safe) 
+    
+    kable(cc_830, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(cc_830), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em")
+    
+    })
+  
+  output$trauma_830 <- renderInfoBox({
+    req(input$file1)
+    
+    trauma_list_830 <- read_excel(input$file1$datapath, sheet = 3, range = "E47", col_names = F)
+    
+    infoBox(title = "Trauma List Today", value = trauma_list_830[1,1], color = "blue", icon = icon("bone"))
+    
+  })
+  
+  output$med830 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "EDD_Due",
+                 "EDD_Elapsed",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_12pm",
+                 "End_Pos",
+                 "Boarders",
+                 "RN_Short",
+                 "nRN_Short",
+                 "Safe")
+    
+    med_830 <- read_excel(input$file1$datapath, sheet = 3, range = "A18:L31", col_names = columns)
+    
+    total_med <- c("Total",
+                   colSums(med_830[, 2], na.rm = T),
+                   colSums(med_830[, 3], na.rm = T),
+                   colSums(med_830[, 4], na.rm = T),
+                   colSums(med_830[, 5], na.rm = T),
+                   colSums(med_830[, 6], na.rm = T),
+                   colSums(med_830[, 7], na.rm = T),
+                   colSums(med_830[, 8], na.rm = T),
+                   colSums(med_830[, 9], na.rm = T),
+                   colSums(med_830[, 10], na.rm = T),
+                   colSums(med_830[, 11], na.rm = T),
+                   NA)
+    
+    med_830 <- rbind(med_830, total_med)
+    
+    med_830 <- med_830 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_12pm = cell_spec(DC_12pm, "html", bold = T, color = "white", background = if_else(DC_12pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+        RN_Short = cell_spec(RN_Short, "html", bold = T, color = "white", background = if_else(RN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        nRN_Short = cell_spec(nRN_Short, "html", bold = T, color = "white", background = if_else(nRN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        Safe = cell_spec(Safe, "html", bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO") , "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "EDD Due Today" = EDD_Due,
+        "EDD Elapsed" = EDD_Elapsed,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 12 pm" = DC_12pm,
+        "End of Day Position" = End_Pos,
+        "Boarders on Ward" = Boarders,
+        "RN Shortfall" = RN_Short,
+        "Night RN Shortfall" = nRN_Short,
+        "Safe to Start" = Safe)
+    
+    kable(med_830, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(med_830), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(med_830), bold = T, color = "white", background = "#03396C")
+    
+  })
+  
+  output$sx830 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "EDD_Due",
+                 "EDD_Elapsed",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_12pm",
+                 "End_Pos",
+                 "Boarders",
+                 "RN_Short",
+                 "nRN_Short",
+                 "Safe")
+    
+    sx_830 <- read_excel(input$file1$datapath, sheet = 3, range = "A34:L41", col_names = columns)
+    
+    total_sx <- c("Total",
+                   colSums(sx_830[, 2], na.rm = T),
+                   colSums(sx_830[, 3], na.rm = T),
+                   colSums(sx_830[, 4], na.rm = T),
+                   colSums(sx_830[, 5], na.rm = T),
+                   colSums(sx_830[, 6], na.rm = T),
+                   colSums(sx_830[, 7], na.rm = T),
+                   colSums(sx_830[, 8], na.rm = T),
+                   colSums(sx_830[, 9], na.rm = T),
+                   colSums(sx_830[, 10], na.rm = T),
+                   colSums(sx_830[, 11], na.rm = T),
+                   NA)
+    
+    sx_830 <- rbind(sx_830, total_sx)
+    
+    sx_830 <- sx_830 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_12pm = cell_spec(DC_12pm, "html", bold = T, color = "white", background = if_else(DC_12pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+        RN_Short = cell_spec(RN_Short, "html", bold = T, color = "white", background = if_else(RN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        nRN_Short = cell_spec(nRN_Short, "html", bold = T, color = "white", background = if_else(nRN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        Safe = cell_spec(Safe, "html", bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO") , "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "EDD Due Today" = EDD_Due,
+        "EDD Elapsed" = EDD_Elapsed,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 12 pm" = DC_12pm,
+        "End of Day Position" = End_Pos,
+        "Boarders on Ward" = Boarders,
+        "RN Shortfall" = RN_Short,
+        "Night RN Shortfall" = nRN_Short,
+        "Safe to Start" = Safe)
+    
+    kable(sx_830, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(sx_830), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(sx_830), bold = T, color = "white", background = "#03396C")
+    
+  })
+  
+  output$ot830 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "EDD_Due",
+                 "EDD_Elapsed",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_12pm",
+                 "End_Pos",
+                 "Boarders",
+                 "RN_Short",
+                 "nRN_Short",
+                 "Safe")
+    
+    ortho_830 <- read_excel(input$file1$datapath, sheet = 3, range = "A44:L46", col_names = columns)
+    
+    ortho_830 <- ortho_830 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_12pm = cell_spec(DC_12pm, "html", bold = T, color = "white", background = if_else(DC_12pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+        RN_Short = cell_spec(RN_Short, "html", bold = T, color = "white", background = if_else(RN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        nRN_Short = cell_spec(nRN_Short, "html", bold = T, color = "white", background = if_else(nRN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        Safe = cell_spec(Safe, "html", bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO") , "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "EDD Due Today" = EDD_Due,
+        "EDD Elapsed" = EDD_Elapsed,
+        "Empty Beds Now" = Empty,
+        "Electives" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 12 pm" = DC_12pm,
+        "End of Day Position" = End_Pos,
+        "Boarders on Ward" = Boarders,
+        "RN Shortfall" = RN_Short,
+        "Night RN Shortfall" = nRN_Short,
+        "Safe to Start" = Safe)
+    
+    kable(ortho_830, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(ortho_830), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(ortho_830), bold = T, color = "white", background = "#03396C")
+    
+    
+    
+  })
+  
+  output$wac830 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "EDD_Due",
+                 "EDD_Elapsed",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_12pm",
+                 "End_Pos",
+                 "Boarders",
+                 "RN_Short",
+                 "nRN_Short",
+                 "Safe")
+    
+    woman_830 <- read_excel(input$file1$datapath, sheet = 3, range = "A49:L55", col_names = columns)
+    
+    woman_830 <- woman_830 %>%
+      select(-"EDD_Due", -"EDD_Elapsed") 
+    
+    total_wac <- c("Total",
+                  colSums(woman_830[, 2], na.rm = T),
+                  colSums(woman_830[, 3], na.rm = T),
+                  colSums(woman_830[, 4], na.rm = T),
+                  colSums(woman_830[, 5], na.rm = T),
+                  colSums(woman_830[, 6], na.rm = T),
+                  colSums(woman_830[, 7], na.rm = T),
+                  colSums(woman_830[, 8], na.rm = T),
+                  colSums(woman_830[, 9], na.rm = T),
+                  NA)
+    
+    woman_830 <- rbind(woman_830, total_wac)
+    
+    woman_830 <- woman_830 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_12pm = cell_spec(DC_12pm, "html", bold = T, color = "white", background = if_else(DC_12pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+        RN_Short = cell_spec(RN_Short, "html", bold = T, color = "white", background = if_else(RN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        nRN_Short = cell_spec(nRN_Short, "html", bold = T, color = "white", background = if_else(nRN_Short > 0, "#c64040", "#56b34b", "#1b1c21")),
+        Safe = cell_spec(Safe, "html", bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO") , "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Empty Beds Now" = Empty,
+        "Electives" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 12 pm" = DC_12pm,
+        "End of Day Position" = End_Pos,
+        "Boarders on Ward" = Boarders,
+        "RN Shortfall" = RN_Short,
+        "Night RN Shortfall" = nRN_Short,
+        "Safe to Start" = Safe)
+    
+    kable(woman_830, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(woman_830), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      row_spec(nrow(woman_830), bold = T, color = "white", background = "#03396C")
+  })
+  
+  output$add830 <- renderText({
+    req(input$file1)
+    
+    add_830 <- read_excel(input$file1$datapath, sheet = 3, range = "O34:U40", col_names = F)
+    
+    add_830 <- select(add_830, -...3, -...5)
+    
+    colnames(add_830) <- c("Ward", "Agreed", "Used", "EDD_Due", "EDD_Elapsed")
+    
+    add_830 <- add_830 %>%
+      mutate(Used = cell_spec(Used, bold = T, color = "white", background = if_else(Used > 0, "#c64040", "#56b34b", "#1b1c21"))
+             ) %>%
+      select("Ward" = Ward,
+             "Agreed Additional Capacity" = Agreed,
+             "Additional Beds in Use" = Used,
+             "EDD Due Today" = EDD_Due,
+             "EDD Elaspsed" = EDD_Elapsed)
+    
+    kable(add_830, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#DA7900", color = "white") %>%
+      row_spec(1:nrow(add_830), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") 
+    
+  })
+  
+
+# Normal 13:00 ------------------------------------------------------------
+  ec_1300 <- reactive({
+    req(input$file1)
+    
+    EC_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "A6:F13", col_names = F)
+    
+    EC_1300$...1 <- gsub(":", "", EC_1300$...1)
+    
+    EC_1300 <- EC_1300 %>%
+      select("FLow" = ...1,
+             "Numbers" = ...6)
+    
+    return(EC_1300)
+  })  
+  
+  output$ec1300_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = ec_1300()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$ec1300_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = ec_1300()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$ec1300_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = ec_1300()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec1300_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = ec_1300()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$ec1300_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = ec_1300()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec1300_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = ec_1300()[[6,2]], color = ifelse(ec_1300()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$ec1300_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = ec_1300()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$ec1300_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = ec_1300()[[8,2]], color = ifelse(ec_1300()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  pc_1300 <- reactive({
+    req(input$file1)
+    
+    PC_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "H6:K13", col_names = F)
+    
+    PC_1300$...1 <- gsub(":", "", PC_1300$...1)
+    
+    PC_1300 <- PC_1300 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...4)
+    
+    return(PC_1300)
+    
+  })
+  
+  
+  output$pc1300_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = pc_1300()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$pc1300_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = pc_1300()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$pc1300_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = pc_1300()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc1300_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = pc_1300()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$pc1300_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = pc_1300()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc1300_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = pc_1300()[[6,2]], color = ifelse(pc_1300()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$pc1300_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = pc_1300()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$pc1300_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = pc_1300()[[8,2]], color = ifelse(pc_1300()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  tot_1300 <- reactive({
+    
+    req(input$file1)
+    
+    total_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "M6:O13", col_names = F)
+    
+    total_1300$...1 <- gsub(":", "", total_1300$...1)
+    
+    total_1300 <- total_1300 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...3)
+    
+    return(total_1300)
+    
+  })
+  
+  output$tot1300_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = tot_1300()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$tot1300_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = tot_1300()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$tot1300_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = tot_1300()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot1300_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = tot_1300()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$tot1300_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = tot_1300()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot1300_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = tot_1300()[[6,2]], color = ifelse(tot_1300()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$tot1300_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = tot_1300()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$tot1300_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = tot_1300()[[8,2]], color = ifelse(tot_1300()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  ED1300 <- reactive({
+    req(input$file1)
+    ED_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "J18:P18", col_names = F)
+    
+    colnames(ED_1300) <- c("Total",
+                           "Longest",
+                           "Assessment",
+                           "Three_hours",
+                           "DTA",
+                           "Breaches",
+                           "Midnight")
+    
+    if(is.character(ED_1300$Longest) == T){
+      ED_1300$Longest <- ED_1300$Longest
+    }else{
+      ED_1300$Longest <- format(ED_1300$Longest, "%T")
+    }
+    
+    if(is.character(ED_1300$Assessment) == T){
+      ED_1300$Assessment <- ED_1300$Assessment
+    }else{
+      ED_1300$Assessment <- format(ED_1300$Assessment, "%T")
+    }
+    
+    return(ED_1300)
+  })
+  
+  output$ed1300_1 <- renderInfoBox({
+    
+    infoBox("Total Number", value = ED1300()[[1,1]],
+            color = "navy",
+            icon = icon("hospital-user"))
+    
+  })
+  
+  output$ed1300_2 <- renderInfoBox({
+    
+    infoBox("Longest Wait", value = ED1300()[[1,2]],
+            color = "yellow",
+            icon = icon("clock"))
+  })
+  
+  
+  output$ed1300_3 <- renderInfoBox({
+    
+    infoBox("Time to Assessment", value = ED1300()[[1,3]],
+            color = "yellow",
+            icon = icon("stopwatch"))
+  })
+  
+  
+  output$ed1300_4 <- renderInfoBox({
+    
+    infoBox("Number with 3 hours wait", value = ED1300()[[1,4]],
+            color = ifelse(ED1300()[[1,4]] > 0, "red", "green"),
+            icon = icon("exclamation-triangle"))
+  })
+  
+  output$ed1300_5 <- renderInfoBox({
+    
+    infoBox("Number of DTA", value = ED1300()[[1,5]],
+            color = ifelse(ED1300()[[1,5]] > 0, "purple", "green"),
+            icon = icon("hospital"))
+  })
+  
+  output$ed1300_6 <- renderInfoBox({
+    
+    infoBox("Breaches Since Midnight", value = ED1300()[[1,6]],
+            color = ifelse(ED1300()[[1,6]] > 0, "purple", "green"),
+            icon = icon("stopwatch"))
+  })
+  
+  output$ed1300_7 <- renderInfoBox({
+    
+    infoBox("Attendances Since Midnight", value = ED1300()[[1,7]],
+            color = "navy",
+            icon = icon("hospital-user"))
+  })
+  
+  
+  
+  au1300 <- reactive({
+    req(input$file1)
+    
+    AU1_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "J44:N44", col_names = F)
+    AU2_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "J47:N47", col_names = F)
+    
+    AU_1300 <- rbind(AU1_1300, AU2_1300)
+    
+    AU_1300 <- AU_1300 %>%
+      select(-...2) %>%
+      select("Now" = ...1,
+             "Beds" = ...3,
+             "DC" = ...4,
+             "Ongoing" =...5)
+    
+    return(AU_1300)
+  })
+  
+  
+  output$au1_1300_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "blue", value = au1300()[[1,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au1_1300_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "blue", value = au1300()[[1,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au1_1300_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "blue", value = au1300()[[1,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au1_1300_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "blue", value = au1300()[[1,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$au2_1300_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "light-blue", value = au1300()[[2,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au2_1300_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "light-blue", value = au1300()[[2,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au2_1300_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "light-blue", value = au1300()[[2,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au2_1300_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "light-blue", value = au1300()[[2,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$cc1300 <- renderText({
+    
+    req(input$file1)
+    
+    cc_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "J25:O29", col_names = F)
+    
+    colnames(cc_1300) <- c("Ward",
+                           "Empty",
+                           "Fit",
+                           "Admissions",
+                           "Discharges",
+                           "End_Pos")
+    
+    cc_1300[, 1] <- c("ITU",
+                      "SHDU",
+                      "MHDU",
+                      "RHDU",
+                      "CCU")
+    
+    cc_1300 <- cc_1300 %>%
+      mutate(
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos >= 0, "#56b34b", "#c64040", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Empty Beds Now" = Empty,
+        "Ward Fit Patients" = Fit,
+        "Planned Admissions" = Admissions,
+        "Discharges" = Discharges,
+        "End of Day Position" = End_Pos,
+      ) 
+    
+    kable(cc_1300, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(cc_1300), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em")
+    
+  })
+  
+  
+  
+  output$med1300 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    med_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "A18:H32", col_names = columns)
+    
+    med_1300 <- med_1300 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(med_1300, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(med_1300), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(med_1300), bold = T, color = "white", background = "#03396C")
+    
+  })
+  
+  output$sx1300 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    sx_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "A34:H42", col_names = columns)
+    
+    sx_1300 <- sx_1300 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(sx_1300, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(sx_1300), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(sx_1300), bold = T, color = "white", background = "#03396C")
+    
+    
+  })
+  
+  output$ot1300 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    ot_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "A44:H46", col_names = columns)
+    
+    ot_1300 <- ot_1300 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(ot_1300, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(ot_1300), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(ot_1300), bold = T, color = "white", background = "#03396C")
+    
+    
+    
+  })
+  
+  
+  output$add1300 <- renderText({
+    req(input$file1)
+    
+    add_1300 <- read_excel(input$file1$datapath, sheet = 4, range = "J34:N40", col_names = F)
+    
+    add_1300 <- select(add_1300, -...3, -...5)
+    
+    colnames(add_1300) <- c("Ward", "Agreed", "Used")
+    
+    add_1300 <- add_1300 %>%
+      mutate(Used = cell_spec(Used, bold = T, color = "white", background = if_else(Used > 0, "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select("Ward" = Ward,
+             "Agreed Additional Capacity" = Agreed,
+             "Additional Beds in Use" = Used)
+    
+    kable(add_1300, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#DA7900", color = "white") %>%
+      row_spec(1:nrow(add_1300), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") 
+    
+  })
+  
+
+# Normal 17:00 ------------------------------------------------------------
+
+  ec_1700 <- reactive({
+    req(input$file1)
+    
+    EC_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "A6:F13", col_names = F)
+    
+    EC_1700$...1 <- gsub(":", "", EC_1700$...1)
+    
+    EC_1700 <- EC_1700 %>%
+      select("FLow" = ...1,
+             "Numbers" = ...6)
+    
+    return(EC_1700)
+  })  
+  
+  output$ec1700_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = ec_1700()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$ec1700_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = ec_1700()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$ec1700_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = ec_1700()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec1700_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = ec_1700()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$ec1700_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = ec_1700()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec1700_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = ec_1700()[[6,2]], color = ifelse(ec_1700()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$ec1700_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = ec_1700()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$ec1700_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = ec_1700()[[8,2]], color = ifelse(ec_1700()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  pc_1700 <- reactive({
+    req(input$file1)
+    
+    PC_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "H6:K13", col_names = F)
+    
+    PC_1700$...1 <- gsub(":", "", PC_1700$...1)
+    
+    PC_1700 <- PC_1700 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...4)
+    
+    return(PC_1700)
+    
+  })
+  
+  
+  output$pc1700_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = pc_1700()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$pc1700_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = pc_1700()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$pc1700_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = pc_1700()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc1700_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = pc_1700()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$pc1700_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = pc_1700()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc1700_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = pc_1700()[[6,2]], color = ifelse(pc_1700()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$pc1700_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = pc_1700()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$pc1700_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = pc_1700()[[8,2]], color = ifelse(pc_1700()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  tot_1700 <- reactive({
+    
+    req(input$file1)
+    
+    total_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "M6:O13", col_names = F)
+    
+    total_1700$...1 <- gsub(":", "", total_1700$...1)
+    
+    total_1700 <- total_1700 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...3)
+    
+    return(total_1700)
+    
+  })
+  
+  output$tot1700_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = tot_1700()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$tot1700_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = tot_1700()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$tot1700_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = tot_1700()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot1700_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = tot_1700()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$tot1700_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = tot_1700()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot1700_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = tot_1700()[[6,2]], color = ifelse(tot_1700()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$tot1700_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = tot_1700()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$tot1700_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = tot_1700()[[8,2]], color = ifelse(tot_1700()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  ED1700 <- reactive({
+    req(input$file1)
+    ED_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "J18:P18", col_names = F)
+    
+    colnames(ED_1700) <- c("Total",
+                           "Longest",
+                           "Assessment",
+                           "Three_hours",
+                           "DTA",
+                           "Breaches",
+                           "Midnight")
+    
+    if(is.character(ED_1700$Longest) == T){
+      ED_1700$Longest <- ED_1700$Longest
+    }else{
+      ED_1700$Longest <- format(ED_1700$Longest, "%T")
+    }
+    
+    if(is.character(ED_1700$Assessment) == T){
+      ED_1700$Assessment <- ED_1700$Assessment
+    }else{
+      ED_1700$Assessment <- format(ED_1700$Assessment, "%T")
+    }
+    
+    return(ED_1700)
+  })
+  
+  output$ed1700_1 <- renderInfoBox({
+    
+    infoBox("Total Number", value = ED1700()[[1,1]],
+            color = "navy",
+            icon = icon("hospital-user"))
+    
+  })
+  
+  output$ed1700_2 <- renderInfoBox({
+    
+    infoBox("Longest Wait", value = ED1700()[[1,2]],
+            color = "yellow",
+            icon = icon("clock"))
+  })
+  
+  
+  output$ed1700_3 <- renderInfoBox({
+    
+    infoBox("Time to Assessment", value = ED1700()[[1,3]],
+            color = "yellow",
+            icon = icon("stopwatch"))
+  })
+  
+  
+  output$ed1700_4 <- renderInfoBox({
+    
+    infoBox("Number with 3 hours wait", value = ED1700()[[1,4]],
+            color = ifelse(ED1700()[[1,4]] > 0, "red", "green"),
+            icon = icon("exclamation-triangle"))
+  })
+  
+  output$ed1700_5 <- renderInfoBox({
+    
+    infoBox("Number of DTA", value = ED1700()[[1,5]],
+            color = ifelse(ED1700()[[1,5]] > 0, "purple", "green"),
+            icon = icon("hospital"))
+  })
+  
+  output$ed1700_6 <- renderInfoBox({
+    
+    infoBox("Breaches Since Midnight", value = ED1700()[[1,6]],
+            color = ifelse(ED1700()[[1,6]] > 0, "purple", "green"),
+            icon = icon("stopwatch"))
+  })
+  
+  output$ed1700_7 <- renderInfoBox({
+    
+    infoBox("Attendances Since Midnight", value = ED1700()[[1,7]],
+            color = "navy",
+            icon = icon("hospital-user"))
+  })
+  
+  
+  
+  au1700 <- reactive({
+    req(input$file1)
+    
+    AU1_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "J44:N44", col_names = F)
+    AU2_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "J47:N47", col_names = F)
+    
+    AU_1700 <- rbind(AU1_1700, AU2_1700)
+    
+    AU_1700 <- AU_1700 %>%
+      select(-...2) %>%
+      select("Now" = ...1,
+             "Beds" = ...3,
+             "DC" = ...4,
+             "Ongoing" =...5)
+    
+    return(AU_1700)
+  })
+  
+  
+  output$au1_1700_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "blue", value = au1700()[[1,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au1_1700_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "blue", value = au1700()[[1,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au1_1700_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "blue", value = au1700()[[1,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au1_1700_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "blue", value = au1700()[[1,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$au2_1700_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "light-blue", value = au1700()[[2,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au2_1700_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "light-blue", value = au1700()[[2,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au2_1700_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "light-blue", value = au1700()[[2,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au2_1700_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "light-blue", value = au1700()[[2,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$cc1700 <- renderText({
+    
+    req(input$file1)
+    
+    cc_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "J25:O29", col_names = F)
+    
+    colnames(cc_1700) <- c("Ward",
+                           "Empty",
+                           "Fit",
+                           "Admissions",
+                           "Discharges",
+                           "End_Pos")
+    
+    cc_1700[, 1] <- c("ITU",
+                      "SHDU",
+                      "MHDU",
+                      "RHDU",
+                      "CCU")
+    
+    cc_1700 <- cc_1700 %>%
+      mutate(
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos >= 0, "#56b34b", "#c64040", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Empty Beds Now" = Empty,
+        "Ward Fit Patients" = Fit,
+        "Planned Admissions" = Admissions,
+        "Discharges" = Discharges,
+        "End of Day Position" = End_Pos,
+      ) 
+    
+    kable(cc_1700, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(cc_1700), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em")
+    
+  })
+  
+  
+  
+  output$med1700 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    med_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "A18:H32", col_names = columns)
+    
+    med_1700 <- med_1700 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(med_1700, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(med_1700), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(med_1700), bold = T, color = "white", background = "#03396C")
+    
+  })
+  
+  output$sx1700 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    sx_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "A34:H42", col_names = columns)
+    
+    sx_1700 <- sx_1700 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(sx_1700, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(sx_1700), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(sx_1700), bold = T, color = "white", background = "#03396C")
+    
+    
+  })
+  
+  output$ot1700 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    ot_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "A44:H46", col_names = columns)
+    
+    ot_1700 <- ot_1700 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(ot_1700, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(ot_1700), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(ot_1700), bold = T, color = "white", background = "#03396C")
+    
+    
+    
+  })
+  
+  
+  output$add1700 <- renderText({
+    req(input$file1)
+    
+    add_1700 <- read_excel(input$file1$datapath, sheet = 5, range = "J34:N40", col_names = F)
+    
+    add_1700 <- select(add_1700, -...3, -...5)
+    
+    colnames(add_1700) <- c("Ward", "Agreed", "Used")
+    
+    add_1700 <- add_1700 %>%
+      mutate(Used = cell_spec(Used, bold = T, color = "white", background = if_else(Used > 0, "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select("Ward" = Ward,
+             "Agreed Additional Capacity" = Agreed,
+             "Additional Beds in Use" = Used)
+    
+    kable(add_1700, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#DA7900", color = "white") %>%
+      row_spec(1:nrow(add_1700), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") 
+    
+  })
+
+
+
+# Normal 19:00 ------------------------------------------------------------
+
+  ec_1900 <- reactive({
+    req(input$file1)
+    
+    EC_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "A6:F13", col_names = F)
+    
+    EC_1900$...1 <- gsub(":", "", EC_1900$...1)
+    
+    EC_1900 <- EC_1900 %>%
+      select("FLow" = ...1,
+             "Numbers" = ...6)
+    
+    return(EC_1900)
+  })  
+  
+  output$ec1900_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = ec_1900()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$ec1900_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = ec_1900()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$ec1900_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = ec_1900()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec1900_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = ec_1900()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$ec1900_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = ec_1900()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$ec1900_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = ec_1900()[[6,2]], color = ifelse(ec_1900()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$ec1900_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = ec_1900()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$ec1900_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = ec_1900()[[8,2]], color = ifelse(ec_1900()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  pc_1900 <- reactive({
+    req(input$file1)
+    
+    PC_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "H6:K13", col_names = F)
+    
+    PC_1900$...1 <- gsub(":", "", PC_1900$...1)
+    
+    PC_1900 <- PC_1900 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...4)
+    
+    return(PC_1900)
+    
+  })
+  
+  
+  output$pc1900_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = pc_1900()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$pc1900_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = pc_1900()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$pc1900_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = pc_1900()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc1900_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = pc_1900()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$pc1900_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = pc_1900()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$pc1900_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = pc_1900()[[6,2]], color = ifelse(pc_1900()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$pc1900_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = pc_1900()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$pc1900_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = pc_1900()[[8,2]], color = ifelse(pc_1900()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  tot_1900 <- reactive({
+    
+    req(input$file1)
+    
+    total_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "M6:O13", col_names = F)
+    
+    total_1900$...1 <- gsub(":", "", total_1900$...1)
+    
+    total_1900 <- total_1900 %>%
+      select("Flow" = ...1,
+             "Numbers" = ...3)
+    
+    return(total_1900)
+    
+  })
+  
+  output$tot1900_1 <- renderInfoBox({
+    
+    infoBox(title = "Electives", value = tot_1900()[[1,2]], color = "navy", icon = icon("clipboard-list"))
+    
+  })
+  
+  output$tot1900_2 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Emergencies", value = tot_1900()[[2,2]], color = "yellow", icon = icon("ambulance"))
+    
+  })
+  
+  output$tot1900_3 <- renderInfoBox({
+    
+    infoBox(title = "Total", value = tot_1900()[[3,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot1900_4 <- renderInfoBox({
+    
+    infoBox(title = "Admissions so far", value = tot_1900()[[4,2]], color = "navy", icon = icon("hospital-user"))
+    
+  })
+  
+  output$tot1900_5 <- renderInfoBox({
+    
+    infoBox(title = "Remaining Today", value = tot_1900()[[5,2]], color = "navy", icon = icon("calculator"))
+    
+  })
+  
+  output$tot1900_6 <- renderInfoBox({
+    
+    infoBox(title = "Beds Available now", value = tot_1900()[[6,2]], color = ifelse(tot_1900()[[6,2]] < 5, "red", "green"), icon = icon("bed"))
+    
+  })
+  
+  output$tot1900_7 <- renderInfoBox({
+    
+    infoBox(title = "Definitive & Expected DC", value = tot_1900()[[7,2]], color = "navy", icon = icon("home"))
+    
+  })
+  
+  output$tot1900_8 <- renderInfoBox({
+    
+    infoBox(title = "Predicted Balance", value = tot_1900()[[8,2]], color = ifelse(tot_1900()[[8,2]] > 0, "green", "red"), icon = icon("balance-scale"))
+    
+  })
+  
+  ED1900 <- reactive({
+    req(input$file1)
+    ED_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "J18:P18", col_names = F)
+    
+    colnames(ED_1900) <- c("Total",
+                           "Longest",
+                           "Assessment",
+                           "Three_hours",
+                           "DTA",
+                           "Breaches",
+                           "Midnight")
+    
+    if(is.character(ED_1900$Longest) == T){
+      ED_1900$Longest <- ED_1900$Longest
+    }else{
+      ED_1900$Longest <- format(ED_1900$Longest, "%T")
+    }
+    
+    if(is.character(ED_1900$Assessment) == T){
+      ED_1900$Assessment <- ED_1900$Assessment
+    }else{
+      ED_1900$Assessment <- format(ED_1900$Assessment, "%T")
+    }
+    
+    return(ED_1900)
+  })
+  
+  output$ed1900_1 <- renderInfoBox({
+    
+    infoBox("Total Number", value = ED1900()[[1,1]],
+            color = "navy",
+            icon = icon("hospital-user"))
+    
+  })
+  
+  output$ed1900_2 <- renderInfoBox({
+    
+    infoBox("Longest Wait", value = ED1900()[[1,2]],
+            color = "yellow",
+            icon = icon("clock"))
+  })
+  
+  
+  output$ed1900_3 <- renderInfoBox({
+    
+    infoBox("Time to Assessment", value = ED1900()[[1,3]],
+            color = "yellow",
+            icon = icon("stopwatch"))
+  })
+  
+  
+  output$ed1900_4 <- renderInfoBox({
+    
+    infoBox("Number with 3 hours wait", value = ED1900()[[1,4]],
+            color = ifelse(ED1900()[[1,4]] > 0, "red", "green"),
+            icon = icon("exclamation-triangle"))
+  })
+  
+  output$ed1900_5 <- renderInfoBox({
+    
+    infoBox("Number of DTA", value = ED1900()[[1,5]],
+            color = ifelse(ED1900()[[1,5]] > 0, "purple", "green"),
+            icon = icon("hospital"))
+  })
+  
+  output$ed1900_6 <- renderInfoBox({
+    
+    infoBox("Breaches Since Midnight", value = ED1900()[[1,6]],
+            color = ifelse(ED1900()[[1,6]] > 0, "purple", "green"),
+            icon = icon("stopwatch"))
+  })
+  
+  output$ed1900_7 <- renderInfoBox({
+    
+    infoBox("Attendances Since Midnight", value = ED1900()[[1,7]],
+            color = "navy",
+            icon = icon("hospital-user"))
+  })
+  
+  
+  
+  au1900 <- reactive({
+    req(input$file1)
+    
+    AU1_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "J43:N43", col_names = F)
+    AU2_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "J46:N46", col_names = F)
+    
+    AU_1900 <- rbind(AU1_1900, AU2_1900)
+    
+    AU_1900 <- AU_1900 %>%
+      select(-...2) %>%
+      select("Now" = ...1,
+             "Beds" = ...3,
+             "DC" = ...4,
+             "Ongoing" =...5)
+    
+    return(AU_1900)
+  })
+  
+  
+  output$au1_1900_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "blue", value = au1900()[[1,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au1_1900_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "blue", value = au1900()[[1,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au1_1900_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "blue", value = au1900()[[1,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au1_1900_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "blue", value = au1900()[[1,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$au2_1900_1 <- renderInfoBox({
+    
+    infoBox(title = "Patients Now", color = "light-blue", value = au1900()[[2,1]], icon = icon("hospital-user"))
+    
+    
+  })
+  
+  output$au2_1900_2 <- renderInfoBox({
+    
+    infoBox(title = "Bed Required", color = "light-blue", value = au1900()[[2,2]], icon = icon("bed"))
+    
+    
+  })
+  
+  output$au2_1900_3 <- renderInfoBox({
+    
+    infoBox(title = "Definite Discharges", color = "light-blue", value = au1900()[[2,3]], icon = icon("home"))
+    
+    
+  })
+  
+  output$au2_1900_4 <- renderInfoBox({
+    
+    infoBox(title = "Ongoing Assessment", color = "light-blue", value = au1900()[[2,4]], icon = icon("clipboard-check"))
+    
+    
+  })
+  
+  output$cc1900 <- renderText({
+    
+    req(input$file1)
+    
+    cc_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "J25:O29", col_names = F)
+    
+    colnames(cc_1900) <- c("Ward",
+                           "Empty",
+                           "Fit",
+                           "Admissions",
+                           "Discharges",
+                           "End_Pos")
+    
+    cc_1900[, 1] <- c("ITU",
+                      "SHDU",
+                      "MHDU",
+                      "RHDU",
+                      "CCU")
+    
+    cc_1900 <- cc_1900 %>%
+      mutate(
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos >= 0, "#56b34b", "#c64040", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Empty Beds Now" = Empty,
+        "Ward Fit Patients" = Fit,
+        "Planned Admissions" = Admissions,
+        "Discharges" = Discharges,
+        "End of Day Position" = End_Pos,
+      ) 
+    
+    kable(cc_1900, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(cc_1900), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em")
+    
+  })
+  
+  
+  
+  output$med1900 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    med_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "A18:H32", col_names = columns)
+    
+    med_1900 <- med_1900 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(med_1900, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(med_1900), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(med_1900), bold = T, color = "white", background = "#03396C")
+    
+  })
+  
+  output$sx1900 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    sx_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "A34:H41", col_names = columns)
+    
+    sx_1900 <- sx_1900 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(sx_1900, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(sx_1900), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(sx_1900), bold = T, color = "white", background = "#03396C")
+    
+    
+  })
+  
+  output$ot1900 <- renderText({
+    req(input$file1)
+    
+    columns <- c("Ward", 
+                 "Access",
+                 "Specialty",
+                 "Empty",
+                 "Electives",
+                 "DC_Expect",
+                 "DC_1pm",
+                 "End_Pos")
+    
+    ot_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "A43:H45", col_names = columns)
+    
+    ot_1900 <- ot_1900 %>%
+      mutate(
+        DC_Expect = cell_spec(DC_Expect, "html", bold = T, color = "white", background = if_else(DC_Expect > 0, "#56b34b", "#c64040", "#1b1c21")),
+        DC_1pm = cell_spec(DC_1pm, "html", bold = T, color = "white", background = if_else(DC_1pm > 0, "#56b34b", "#c64040", "#1b1c21")),
+        End_Pos = cell_spec(End_Pos, "html", bold = T, color = "white", background = if_else(End_Pos < 0, "#c64040", "#56b34b", "#1b1c21")),
+      ) %>%
+      select(
+        "Ward" = Ward,
+        "Access Quotas" = Access,
+        "Specialty Bed Waits" = Specialty,
+        "Empty Beds Now" = Empty,
+        "Electives (GP's on board AU 1 & 2)" = Electives,
+        "Discharges Expected" = DC_Expect,
+        "Discharges by 1 pm" = DC_1pm,
+        "End of Day Position" = End_Pos)
+    
+    kable(ot_1900, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#d8dfe4", color = "black") %>%
+      row_spec(1:nrow(ot_1900), align = "center", background = "#DCDCDC") %>%
+      column_spec(2, color = "white", background = "#E79695") %>%
+      column_spec(3, color = "white", background = "#DA7900") %>%
+      column_spec(1, bold = T, width = "8em") %>%
+      column_spec(5, width = "10em") %>%
+      row_spec(nrow(ot_1900), bold = T, color = "white", background = "#03396C")
+    
+    
+    
+  })
+  
+  
+  output$add1900 <- renderText({
+    req(input$file1)
+    
+    add_1900 <- read_excel(input$file1$datapath, sheet = 6, range = "J34:N39", col_names = F)
+    
+    add_1900 <- select(add_1900, -...3, -...5)
+    
+    colnames(add_1900) <- c("Ward", "Agreed", "Used")
+    
+    add_1900 <- add_1900 %>%
+      mutate(Used = cell_spec(Used, bold = T, color = "white", background = if_else(Used > 0, "#c64040", "#56b34b", "#1b1c21"))
+      ) %>%
+      select("Ward" = Ward,
+             "Agreed Additional Capacity" = Agreed,
+             "Additional Beds in Use" = Used)
+    
+    kable(add_1900, "html", escape = F) %>%
+      kable_styling(full_width = T, position = "center", bootstrap_options = "condensed", font_size = 16) %>%
+      row_spec(0, bold = T, align = "center", background = "#DA7900", color = "white") %>%
+      row_spec(1:nrow(add_1900), align = "center", background = "#DCDCDC") %>%
+      column_spec(1, bold = T, width = "8em") 
+    
+  })
+  
   
 # COVID Section -----------------------------------------------------------
   
@@ -2641,7 +5321,7 @@ server <- function(input, output){
       mutate(Empty.col = cell_spec(Empty, bold = T, color = "white", background = if_else(Empty > 5, "#56b34b", "#c64040", "#1b1c21")),
              RN.col = cell_spec(RN, bold = T, color = "white", background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
              nRN.col = cell_spec(nRN, bold = T, color = "white", background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
-             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO"), "#c64040", "#56b34b", "#1b1c21"))
              ) %>%
       select("Ward" = Ward,
              "Bed Compliment" = Compliment,
@@ -2686,7 +5366,7 @@ server <- function(input, output){
       mutate(Empty.col = cell_spec(Empty, bold = T, color = "white", background = if_else(Empty > 5, "#56b34b", "#c64040", "#1b1c21")),
              RN.col = cell_spec(RN, bold = T, color = "white", background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
              nRN.col = cell_spec(nRN, bold = T, color = "white", background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
-             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO"), "#c64040", "#56b34b", "#1b1c21"))
             ) %>%
       select("Ward" = Ward,
              "Bed Compliment" = Compliment,
@@ -2771,7 +5451,7 @@ server <- function(input, output){
       mutate(Empty.col = cell_spec(Empty, bold = T, color = "white", background = ifelse(Empty > 5, "#56b34b", "#c64040")),
              RN.col = cell_spec(RN, bold = T, color = "white", background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
              nRN.col = cell_spec(nRN, bold = T, color = "white", background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
-             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO"), "#c64040", "#56b34b", "#1b1c21"))
       ) %>%
       select("Ward" = Ward,
              "Bed Compliment" = Compliment,
@@ -2831,7 +5511,7 @@ server <- function(input, output){
     df.cc <- c830_cc() %>%
       mutate(RN.col = cell_spec(RN, bold = T, color = "white", background = if_else(RN > 0, "#c64040", "#56b34b", "#1b1c21")),
              nRN.col = cell_spec(nRN, bold = T, color = "white", background = if_else(nRN > 0, "#c64040", "#56b34b", "#1b1c21")),
-             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n"), "#c64040", "#56b34b", "#1b1c21"))
+             Safe.col = cell_spec(Safe, bold = T, color = "white", background = if_else((Safe == "No" | Safe == "N" | Safe == "no" | Safe == "n" | Safe == "NO"), "#c64040", "#56b34b", "#1b1c21"))
             ) %>%
       select("Ward" = Ward,
              "Bed Compliment" = Compliment,

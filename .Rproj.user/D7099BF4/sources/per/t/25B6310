@@ -1,25 +1,24 @@
 {
-    "collab_server" : "",
-    "contents" : "",
-    "created" : 1588923828798.000,
-    "dirty" : false,
-    "encoding" : "UTF-8",
-    "folds" : "",
-    "hash" : "2070173559",
-    "id" : "25B6310",
-    "lastKnownWriteTime" : 1589446899,
-    "last_content_update" : 1589446899392,
-    "path" : "~/R_Projects/VHKSitRep/data_other_scripts/dataExtract.R",
-    "project_path" : "data_other_scripts/dataExtract.R",
-    "properties" : {
-        "cursorPosition" : "169,67",
-        "scrollLine" : "150"
+    "id": "25B6310",
+    "path": "~/R_Projects/VHKSitRep/data_other_scripts/dataExtract.R",
+    "project_path": "data_other_scripts/dataExtract.R",
+    "type": "r_source",
+    "hash": "2201426784",
+    "contents": "",
+    "dirty": false,
+    "created": 1588923828798.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "cursorPosition": "222,0",
+        "scrollLine": "0"
     },
-    "read_only" : false,
-    "read_only_alternatives" : [
-    ],
-    "relative_order" : 2,
-    "source_on_save" : false,
-    "source_window" : "",
-    "type" : "r_source"
+    "folds": "",
+    "lastKnownWriteTime": 1590606022,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1590606022719,
+    "read_only": false,
+    "read_only_alternatives": []
 }

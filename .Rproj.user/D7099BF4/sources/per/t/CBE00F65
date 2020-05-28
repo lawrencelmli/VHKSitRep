@@ -1,0 +1,32 @@
+{
+    "id": "CBE00F65",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1590611213806.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "sum_nrc",
+        "caption": "sum_nrc",
+        "totalObservations": "7",
+        "displayedObservations": "7",
+        "variables": "2",
+        "cacheKey": "6B44A531",
+        "object": "sum_nrc",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=sum_nrc&cache_key=6B44A531&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1588272729,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1590611213806,
+    "read_only": false,
+    "read_only_alternatives": []
+}
