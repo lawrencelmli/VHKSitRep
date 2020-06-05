@@ -1,0 +1,32 @@
+{
+    "id": "D93494BC",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1590699370463.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "expression": "sum_c1700",
+        "caption": "sum_c1700",
+        "totalObservations": 7,
+        "displayedObservations": 7,
+        "variables": 6,
+        "cacheKey": "82D4DDA8",
+        "object": "sum_c1700",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=sum_c1700&cache_key=82D4DDA8&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2459563780555895918,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1590699370463,
+    "read_only": false,
+    "read_only_alternatives": []
+}
